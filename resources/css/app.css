@@ -140,8 +140,84 @@
     --spacing-3xl: 4rem;
 }
 
-/* Dark mode - softer version */
+
 .dark {
+    /* === UPDATED BRAND COLORS (Softer, Warmer) === */
+
+    /* Primary - Soft Teal/Turquoise */
+    --primary: #5cbdb9; /* Main soft teal */
+    --primary-deep: #4a9c98; /* Deeper teal */
+    --primary-light: #7dd3cf; /* Light teal */
+    --primary-foreground: #ffffff;
+
+    /* Accent - Warm Coral/Pink */
+    --accent: #f28482; /* Soft coral pink */
+    --accent-light: #ffb5b3; /* Light coral */
+    --accent-foreground: #ffffff;
+
+    /* Secondary - Warm Green */
+    --secondary: #84c7a6; /* Soft mint green */
+    --secondary-light: #a8dabc;
+    --secondary-foreground: #1f5f3f;
+
+    /* Neutral - Warm Grays */
+    --background: #fdfcfb; /* Warm off-white */
+    --foreground: #2d3e3f; /* Soft dark teal-gray */
+
+    --card: #ffffff;
+    --card-foreground: #2d3e3f;
+
+    --muted: #f5f3f0; /* Warm light gray */
+    --muted-foreground: #6b7c7d;
+
+    /* Supporting Colors */
+    --warning: #f9c74f; /* Soft yellow */
+    --info: #90c9e8; /* Soft blue */
+    --success: #84c7a6; /* Matches secondary */
+
+    /* Borders */
+    --border: #e8e5e0; /* Soft warm border */
+    --input: #e8e5e0;
+    --ring: #5cbdb9; /* Focus ring matches primary */
+
+    /* Radius - More Rounded */
+    --radius: 1rem; /* Increased from 0.625rem */
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+
+    /* Shadows - Softer */
+    --shadow-sm:
+        0 1px 3px 0 rgba(93, 189, 185, 0.08),
+        0 1px 2px -1px rgba(93, 189, 185, 0.08);
+    --shadow:
+        0 4px 6px -1px rgba(93, 189, 185, 0.12),
+        0 2px 4px -2px rgba(93, 189, 185, 0.12);
+    --shadow-md:
+        0 10px 15px -3px rgba(93, 189, 185, 0.15),
+        0 4px 6px -4px rgba(93, 189, 185, 0.15);
+    --shadow-lg:
+        0 20px 25px -5px rgba(93, 189, 185, 0.15),
+        0 8px 10px -6px rgba(93, 189, 185, 0.15);
+    --shadow-xl: 0 25px 50px -12px rgba(93, 189, 185, 0.2);
+
+    /* Typography Scale - Softer */
+    --font-sans:
+        'Instrument Sans', 'Nunito', 'Quicksand', ui-sans-serif, system-ui,
+        sans-serif;
+
+    /* Spacing - More Generous */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+}
+
+/* Dark mode - softer version */
+.custom {
     /* --background: #1a2526;
     --foreground: #e8f5f4;
 
