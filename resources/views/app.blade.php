@@ -17,9 +17,11 @@
                     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
                     if (prefersDark) {
-                        document.documentElement.classList.add('dark');
+                        // document.documentElement.classList.add('dark');
+                        document.documentElement.classList.add('light');
                     }
                 }
+                document.documentElement.classList.remove('dark');
             })();
         </script>
 
@@ -30,7 +32,9 @@
             }
 
             html.dark {
-                background-color: oklch(0.145 0 0);
+                /* background-color: oklch(0.145 0 0); */
+                                background-color: oklch(1 0 0);
+
             }
         </style>
 

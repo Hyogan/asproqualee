@@ -107,7 +107,7 @@ export function Header() {
                 className={cn(
                     'fixed top-0 right-0 left-0 z-50 transition-colors duration-300',
                     isScrolled || isMobileMenuOpen
-                        ? 'bg-white/95 shadow-md backdrop-blur-md dark:bg-background/95'
+                        ? 'bg-white/95 shadow-md backdrop-blur-md'
                         : 'bg-transparent',
                 )}
             >
