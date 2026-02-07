@@ -1,0 +1,364 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-deep: var(--primary-deep);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ==========================================================================
+   SOFT & FRIENDLY DESIGN SYSTEM
+   Based on environmental illustration aesthetic
+   ========================================================================== */
+
+:root {
+    /* === UPDATED BRAND COLORS (Softer, Warmer) === */
+
+    /* Primary - Soft Teal/Turquoise */
+    --primary: #5cbdb9; /* Main soft teal */
+    --primary-deep: #4a9c98; /* Deeper teal */
+    --primary-light: #7dd3cf; /* Light teal */
+    --primary-foreground: #ffffff;
+
+    /* Accent - Warm Coral/Pink */
+    --accent: #f28482; /* Soft coral pink */
+    --accent-light: #ffb5b3; /* Light coral */
+    --accent-foreground: #ffffff;
+
+    /* Secondary - Warm Green */
+    --secondary: #84c7a6; /* Soft mint green */
+    --secondary-light: #a8dabc;
+    --secondary-foreground: #1f5f3f;
+
+    /* Neutral - Warm Grays */
+    --background: #fdfcfb; /* Warm off-white */
+    --foreground: #2d3e3f; /* Soft dark teal-gray */
+
+    --card: #ffffff;
+    --card-foreground: #2d3e3f;
+
+    --muted: #f5f3f0; /* Warm light gray */
+    --muted-foreground: #6b7c7d;
+
+    /* Supporting Colors */
+    --warning: #f9c74f; /* Soft yellow */
+    --info: #90c9e8; /* Soft blue */
+    --success: #84c7a6; /* Matches secondary */
+
+    /* Borders */
+    --border: #e8e5e0; /* Soft warm border */
+    --input: #e8e5e0;
+    --ring: #5cbdb9; /* Focus ring matches primary */
+
+    /* Radius - More Rounded */
+    --radius: 1rem; /* Increased from 0.625rem */
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+
+    /* Shadows - Softer */
+    --shadow-sm:
+        0 1px 3px 0 rgba(93, 189, 185, 0.08),
+        0 1px 2px -1px rgba(93, 189, 185, 0.08);
+    --shadow:
+        0 4px 6px -1px rgba(93, 189, 185, 0.12),
+        0 2px 4px -2px rgba(93, 189, 185, 0.12);
+    --shadow-md:
+        0 10px 15px -3px rgba(93, 189, 185, 0.15),
+        0 4px 6px -4px rgba(93, 189, 185, 0.15);
+    --shadow-lg:
+        0 20px 25px -5px rgba(93, 189, 185, 0.15),
+        0 8px 10px -6px rgba(93, 189, 185, 0.15);
+    --shadow-xl: 0 25px 50px -12px rgba(93, 189, 185, 0.2);
+
+    /* Typography Scale - Softer */
+    --font-sans:
+        'Instrument Sans', 'Nunito', 'Quicksand', ui-sans-serif, system-ui,
+        sans-serif;
+
+    /* Spacing - More Generous */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+}
+
+/* Dark mode - softer version */
+.dark {
+    /* --background: #1a2526;
+    --foreground: #e8f5f4;
+
+    --card: #243334;
+    --card-foreground: #e8f5f4;
+
+    --primary: #7dd3cf;
+    --primary-deep: #5cbdb9;
+
+    --accent: #ffb5b3;
+    --secondary: #a8dabc;
+
+    --muted: #2d3e3f;
+    --muted-foreground: #a3b5b6;
+
+    --border: #3a4b4c;
+    --input: #3a4b4c; */
+
+    /* Primary - Soft Teal/Turquoise */
+    --primary: #5cbdb9; /* Main soft teal */
+    --primary-deep: #4a9c98; /* Deeper teal */
+    --primary-light: #7dd3cf; /* Light teal */
+    --primary-foreground: #ffffff;
+
+    /* Accent - Warm Coral/Pink */
+    --accent: #f28482; /* Soft coral pink */
+    --accent-light: #ffb5b3; /* Light coral */
+    --accent-foreground: #ffffff;
+
+    /* Secondary - Warm Green */
+    --secondary: #84c7a6; /* Soft mint green */
+    --secondary-light: #a8dabc;
+    --secondary-foreground: #1f5f3f;
+
+    /* Neutral - Warm Grays */
+    --background: #fdfcfb; /* Warm off-white */
+    --foreground: #2d3e3f; /* Soft dark teal-gray */
+
+    --card: #ffffff;
+    --card-foreground: #2d3e3f;
+
+    --muted: #f5f3f0; /* Warm light gray */
+    --muted-foreground: #6b7c7d;
+
+    /* Supporting Colors */
+    --warning: #f9c74f; /* Soft yellow */
+    --info: #90c9e8; /* Soft blue */
+    --success: #84c7a6; /* Matches secondary */
+
+    /* Borders */
+    --border: #e8e5e0; /* Soft warm border */
+    --input: #e8e5e0;
+    --ring: #5cbdb9; /* Focus ring matches primary */
+}
+
+/* ==========================================================================
+   UTILITY CLASSES - SOFT AESTHETIC
+   ========================================================================== */
+
+/* Soft rounded corners everywhere */
+.rounded-soft {
+    border-radius: var(--radius);
+}
+.rounded-soft-lg {
+    border-radius: var(--radius-lg);
+}
+.rounded-soft-xl {
+    border-radius: var(--radius-xl);
+}
+.rounded-soft-2xl {
+    border-radius: var(--radius-2xl);
+}
+
+/* Soft shadows */
+.shadow-soft-sm {
+    box-shadow: var(--shadow-sm);
+}
+.shadow-soft {
+    box-shadow: var(--shadow);
+}
+.shadow-soft-md {
+    box-shadow: var(--shadow-md);
+}
+.shadow-soft-lg {
+    box-shadow: var(--shadow-lg);
+}
+.shadow-soft-xl {
+    box-shadow: var(--shadow-xl);
+}
+
+/* Gentle gradients */
+.gradient-primary {
+    background: linear-gradient(
+        135deg,
+        var(--primary-light) 0%,
+        var(--primary) 50%,
+        var(--primary-deep) 100%
+    );
+}
+
+.gradient-warm {
+    background: linear-gradient(
+        135deg,
+        var(--secondary-light) 0%,
+        var(--primary-light) 50%,
+        var(--accent-light) 100%
+    );
+}
+
+.gradient-soft {
+    background: linear-gradient(
+        180deg,
+        var(--background) 0%,
+        var(--muted) 100%
+    );
+}
+
+/* Soft overlays for images */
+.overlay-soft-light {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.7) 100%
+    );
+}
+
+.overlay-soft-dark {
+    background: linear-gradient(
+        180deg,
+        rgba(45, 62, 63, 0.5) 0%,
+        rgba(45, 62, 63, 0.8) 100%
+    );
+}
+
+/* Friendly hover states */
+.hover-lift {
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Soft focus rings */
+.focus-soft:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(93, 189, 185, 0.2);
+}
+
+/* Typography - Friendlier */
+.text-display {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.text-heading {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+.text-body {
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+}
+
+/* Decorative blobs (like in the image) */
+.blob-decoration {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    opacity: 0.6;
+    filter: blur(40px);
+}
+
+/* Illustration-style borders */
+.border-soft {
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.border-dashed-soft {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+}
+
+/* Playful animations */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
+}
+
+.animate-wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+}
