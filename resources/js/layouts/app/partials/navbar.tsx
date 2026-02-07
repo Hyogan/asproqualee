@@ -1,11 +1,26 @@
 import AppLogoIcon from '@/components/app-logo-icon';
 import { cn } from '@/lib/utils';
 import marketing from '@/routes/marketing';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import {
+    Activity,
+    Briefcase,
+    ChevronDown,
+    Layers,
+    LucideIcon,
+    Menu,
+    X,
+} from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
-const navigationItems = [
+interface NavEl {
+    label: string;
+    href: string;
+    icon?: ReactNode | null;
+    children?: NavEl[];
+    className?: string;
+}
+const navigationItems: NavEl[] = [
     { label: 'Accueil', href: '/' },
     {
         label: 'Notre Mission',
@@ -18,19 +33,52 @@ const navigationItems = [
     {
         label: 'Nos Actions',
         href: '/actions',
+        // children: [
+        //     { label: "Protection de l'eau", href: '/actions/water-protection' },
+        //     { label: 'Assainissement', href: '/actions/sanitation' },
+        //     {
+        //         label: 'Développement fluvial',
+        //         href: '/actions/river-development',
+        //     },
+        //     { label: 'Sensibilisation', href: '/actions/awareness' },
+        // ],
+
         children: [
-            { label: "Protection de l'eau", href: '/actions/water-protection' },
-            { label: 'Assainissement', href: '/actions/sanitation' },
             {
-                label: 'Développement fluvial',
-                href: '/actions/river-development',
+                label: 'Nos actions',
+                href: '/actions/',
+                icon: <Activity className="h-5 w-5" />,
             },
-            { label: 'Sensibilisation', href: '/actions/awareness' },
+            {
+                label: 'Nos projets',
+                href: '/projects',
+                icon: <Briefcase className="h-5 w-5" />,
+            },
+            {
+                label: 'Nos programmes',
+                href: '/programs',
+                icon: <Layers className="h-5 w-5" />,
+            },
         ],
     },
-    { label: 'Eau & Santé', href: '/water-health' },
-    { label: "S'impliquer", href: '/get-involved' },
-    { label: 'Actualités', href: '/news' },
+    {
+        label: 'Eau & Santé',
+        href: '/water-health',
+        className: '',
+    },
+    // { label: "S'impliquer", href: '/get-involved' },
+    // { label: 'Actualités', href: '/blog', className: '' },
+    // { label: 'produits', href: '/produits' },
+
+    {
+        label: 'Plus',
+        href: '#',
+        children: [
+            { label: "S'impliquer", href: '/get-involved' },
+            { label: 'Actualités', href: '/blog' },
+            { label: 'Produits', href: '/produits' },
+        ],
+    },
 ];
 
 export function Header() {
@@ -117,6 +165,7 @@ export function Header() {
                                             isScrolled
                                                 ? 'text-foreground hover:bg-secondary'
                                                 : 'text-white hover:bg-white/10',
+                                            item.className,
                                         )}
                                     >
                                         {item.label}
@@ -151,8 +200,15 @@ export function Header() {
                                                                 href={
                                                                     child.href
                                                                 }
-                                                                className="block px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary hover:text-white"
+                                                                className="flex items-center gap-2 px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary hover:text-white"
                                                             >
+                                                                {child.icon && (
+                                                                    <>
+                                                                        {
+                                                                            child.icon
+                                                                        }
+                                                                    </>
+                                                                )}
                                                                 {child.label}
                                                             </a>
                                                         ),
@@ -251,8 +307,11 @@ export function Header() {
                                                             false,
                                                         )
                                                     }
-                                                    className="block text-base text-muted-foreground hover:text-primary"
+                                                    className="block flex items-center gap-2 text-base text-muted-foreground hover:text-primary"
                                                 >
+                                                    {child.icon && (
+                                                        <>{child.icon}</>
+                                                    )}
                                                     {child.label}
                                                 </a>
                                             ))}

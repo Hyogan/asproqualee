@@ -13,7 +13,7 @@ interface MainLayoutProps {
 
 export default function MainLayout({
     children,
-    title = "Association pour l'Eau, l'Assainissement et l'Environnement",
+    title = "Asproqualee | Association pour l'Eau, l'Assainissement et l'Environnement",
     description = "Nous œuvrons pour l'accès à l'eau potable, l'assainissement, l'hygiène et la protection de l'environnement dans nos communautés.",
     ogImage = '/images/og-default.jpg',
     canonical,
