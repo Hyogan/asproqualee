@@ -29,8 +29,13 @@ class BlogPost extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function category() {
-        return $this->belongsTo(BlogPostCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function tags() {

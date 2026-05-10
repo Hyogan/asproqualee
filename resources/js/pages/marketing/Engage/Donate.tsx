@@ -1,6 +1,7 @@
 import HeroSection from '@/components/marketing/HeroSection';
 import Section from '@/components/marketing/Section';
 import MainLayout from '@/layouts/app/app-main-layout';
+import donate from '@/routes/donate';
 import { useForm } from '@inertiajs/react';
 import { CheckCircle, CreditCard, Droplet, Heart, Shield } from 'lucide-react';
 import { useState } from 'react';
@@ -40,7 +41,7 @@ export default function Donate() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post('/donate');
+        post(donate.store().url);
     };
 
     return (

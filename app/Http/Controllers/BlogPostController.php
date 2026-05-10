@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\Category;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +27,7 @@ class BlogPostController extends Controller
                 'readTime' => $post->read_time,
             ]);
 
-        return Inertia::render('Blog/Index', [
+        return Inertia::render('marketing/Blog/Index', [
             'posts' => $posts,
             'categories' => Category::pluck('name'),
         ]);
@@ -36,7 +35,7 @@ class BlogPostController extends Controller
 
     public function show(BlogPost $blogPost)
     {
-        return Inertia::render('Blog/Show', [
+        return Inertia::render('marketing/Blog/Details', [
             'post' => $blogPost->load(['author:id,name', 'category:id,name', 'tags:id,name']),
         ]);
     }
