@@ -15,7 +15,6 @@ class Donation extends Model
         'phone',
         'anonymous',
         'newsletter',
-        'status',
     ];
 
     protected $casts = [

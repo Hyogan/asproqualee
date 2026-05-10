@@ -23,19 +23,28 @@ export default function Donate() {
 
     const amounts = [
         {
-            value: '5 000',
+            amount: '5000',
+            label: '5 000',
             impact: "10 familles accèdent à l'eau potable pendant 1 semaine",
         },
         {
-            value: '50 000',
+            amount: '50000',
+            label: '50 000',
             impact: "Formation d'un comité de gestion communautaire",
         },
-        { value: '100 000', impact: "Installation d'une pompe manuelle" },
+        { amount: '100000', label: '100 000', impact: "Installation d'une pompe manuelle" },
         {
-            value: '250 000 ',
+            amount: '250000',
+            label: '250 000',
             impact: "Construction d'un point d'eau pour 50 personnes",
         },
     ];
+
+    // Format a clean numeric string for display (e.g. '5000' → '5 000')
+    const formatAmount = (val: string) => {
+        const n = parseInt(val, 10);
+        return isNaN(n) ? val : n.toLocaleString('fr-FR');
+    };
 
     const selectedAmount = data.amount || data.customAmount;
 
@@ -167,12 +176,12 @@ export default function Donate() {
                                         <div className="mb-6 grid grid-cols-2 gap-4">
                                             {amounts.map((item) => (
                                                 <button
-                                                    key={item.value}
+                                                    key={item.amount}
                                                     type="button"
                                                     onClick={() => {
                                                         setData(
                                                             'amount',
-                                                            item.value,
+                                                            item.amount,
                                                         );
                                                         setData(
                                                             'customAmount',
@@ -181,13 +190,13 @@ export default function Donate() {
                                                     }}
                                                     className={`rounded-2xl border-2 p-6 text-left transition-all ${
                                                         data.amount ===
-                                                        item.value
+                                                        item.amount
                                                             ? 'border-[#5CBDB9] bg-[#5CBDB9]/5 shadow-md'
                                                             : 'border-[#E8E5E0] hover:border-[#5CBDB9]/30'
                                                     }`}
                                                 >
                                                     <div className="mb-2 text-3xl font-bold text-[#2D3E3F]">
-                                                        {item.value}Fcfa
+                                                        {item.label} Fcfa
                                                     </div>
                                                     <div className="text-sm leading-relaxed text-[#6B7C7D]">
                                                         {item.impact}
@@ -383,7 +392,7 @@ export default function Donate() {
                                                 <CreditCard className="h-6 w-6" />
                                                 {processing
                                                     ? 'Traitement...'
-                                                    : `Finaliser mon Don de ${selectedAmount}Fcfa`}
+                                                    : `Finaliser mon Don de ${formatAmount(selectedAmount)} Fcfa`}
                                             </span>
                                             <div className="absolute inset-0 origin-left scale-x-0 transform bg-white/20 transition-transform group-hover:scale-x-100" />
                                         </button>
@@ -416,7 +425,7 @@ export default function Donate() {
                                             <p className="text-sm leading-relaxed text-[#6B7C7D]">
                                                 {amounts.find(
                                                     (a) =>
-                                                        a.value ===
+                                                        a.amount ===
                                                         selectedAmount,
                                                 )?.impact ||
                                                     'Votre don finance directement nos projets sur le terrain'}
@@ -434,14 +443,12 @@ export default function Donate() {
                                             de réduction d'impôt
                                         </p>
                                         <p className="text-xs">
-                                            Un don de {selectedAmount || '50'}
+                                            Un don de {formatAmount(selectedAmount) || '50'}
                                             Fcfa ne vous coûte réellement que{' '}
                                             <span className="font-semibold text-[#2D3E3F]">
-                                                {Math.round(
-                                                    (parseFloat(
-                                                        selectedAmount,
-                                                    ) || 50) * 0.34,
-                                                )}
+                                                {formatAmount(String(Math.round(
+                                                    (parseInt(selectedAmount, 10) || 50) * 0.34,
+                                                )))}
                                                 Fcfa
                                             </span>
                                         </p>

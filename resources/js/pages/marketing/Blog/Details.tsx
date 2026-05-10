@@ -1,6 +1,7 @@
 import HeroSection from '@/components/marketing/HeroSection';
 import MainLayout from '@/layouts/app/app-main-layout';
 import { usePage } from '@inertiajs/react';
+import DOMPurify from 'dompurify';
 import { Calendar, User } from 'lucide-react';
 
 interface BlogPost {
@@ -61,7 +62,7 @@ export default function BlogDetailsPage() {
 
                         <div
                             className="prose max-w-full"
-                            dangerouslySetInnerHTML={{ __html: post.content }}
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
                         />
 
                         <div className="mt-8 flex flex-wrap gap-2">
