@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDonationController;
 use App\Http\Controllers\Admin\AdminTaxonomyController;
+use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\AdminVolunteerController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\DonateController;
@@ -144,6 +145,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     Route::post('/tags', [AdminTaxonomyController::class, 'storeTag'])->name('tags.store');
     Route::put('/tags/{tag}', [AdminTaxonomyController::class, 'updateTag'])->name('tags.update');
     Route::delete('/tags/{tag}', [AdminTaxonomyController::class, 'destroyTag'])->name('tags.destroy');
+
+    Route::get('/pages/about',  [AdminPagesController::class, 'about'])->name('pages.about');
+    Route::put('/pages/about',  [AdminPagesController::class, 'updateAbout'])->name('pages.about.update');
+    Route::get('/pages/values', [AdminPagesController::class, 'values'])->name('pages.values');
+    Route::put('/pages/values', [AdminPagesController::class, 'updateValues'])->name('pages.values.update');
 });
 
 require __DIR__ . '/settings.php';

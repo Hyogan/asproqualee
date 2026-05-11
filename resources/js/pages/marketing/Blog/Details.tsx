@@ -32,12 +32,31 @@ export default function BlogDetailsPage() {
     const authorName = post.author?.name ?? 'Asproqualee';
     const categoryName = post.category?.name ?? '';
 
+    const articleSchema = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.excerpt,
+        image: post.image ?? undefined,
+        datePublished: post.published_at ?? undefined,
+        author: { '@type': 'Person', name: authorName },
+        publisher: {
+            '@type': 'Organization',
+            name: 'AsproQualee',
+            logo: { '@type': 'ImageObject', url: 'https://asproqualee.org/images/logo.png' },
+        },
+    });
+
     return (
         <MainLayout
-            title={`${post.title} | Asproqualee`}
+            title={post.title}
             description={post.excerpt}
+            ogImage={post.image ?? undefined}
+            ogType="article"
         >
-            <Head title={`${post.title} | Asproqualee`} />
+            <Head title={`${post.title} | AsproQualee`}>
+                <script type="application/ld+json">{articleSchema}</script>
+            </Head>
 
             <main className="min-h-screen">
                 <HeroSection
