@@ -1,12 +1,16 @@
 import AppLayout from '@/layouts/app-layout';
 import { Head, Link } from '@inertiajs/react';
-import { BookOpen, DollarSign, Mail, Users } from 'lucide-react';
+import { BookOpen, DollarSign, Folder, GraduationCap, Mail, ShoppingBag, Users, Zap } from 'lucide-react';
 
 interface Stats {
     donations: number;
     volunteers: number;
     messages: number;
     blog_posts: number;
+    actions: number;
+    programs: number;
+    products: number;
+    projects: number;
 }
 
 interface Donation {
@@ -32,10 +36,14 @@ const STATUS_COLORS: Record<string, string> = {
 
 export default function AdminDashboard({ stats, recent_donations }: Props) {
     const cards = [
-        { label: 'Dons reçus',           value: stats.donations,  icon: DollarSign, href: '/admin/donations', color: 'text-primary' },
-        { label: 'Candidatures bénévoles', value: stats.volunteers, icon: Users,      href: '/admin/volunteers', color: 'text-secondary' },
-        { label: 'Messages non lus',      value: stats.messages,   icon: Mail,       href: '/admin/messages', color: 'text-accent' },
-        { label: 'Articles de blog',      value: stats.blog_posts, icon: BookOpen,   href: '/admin/blog', color: 'text-primary' },
+        { label: 'Dons reçus',            value: stats.donations,  icon: DollarSign,    href: '/admin/donations',  color: 'text-primary' },
+        { label: 'Bénévoles',             value: stats.volunteers, icon: Users,         href: '/admin/volunteers', color: 'text-secondary' },
+        { label: 'Messages non lus',      value: stats.messages,   icon: Mail,          href: '/admin/messages',   color: 'text-accent' },
+        { label: 'Articles',              value: stats.blog_posts, icon: BookOpen,      href: '/admin/blog',       color: 'text-primary' },
+        { label: 'Actions',               value: stats.actions,    icon: Zap,           href: '/admin/actions',    color: 'text-blue-500' },
+        { label: 'Programmes',            value: stats.programs,   icon: GraduationCap, href: '/admin/programs',   color: 'text-indigo-500' },
+        { label: 'Produits',              value: stats.products,   icon: ShoppingBag,   href: '/admin/products',   color: 'text-emerald-500' },
+        { label: 'Projets',               value: stats.projects,   icon: Folder,        href: '/admin/projects',   color: 'text-amber-500' },
     ];
 
     return (
@@ -46,7 +54,7 @@ export default function AdminDashboard({ stats, recent_donations }: Props) {
                 <h1 className="text-2xl font-bold text-foreground">Tableau de bord</h1>
 
                 {/* Stats */}
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {cards.map((card) => (
                         <Link
                             key={card.label}

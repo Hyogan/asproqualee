@@ -1,6 +1,7 @@
 import AppLogoIcon from '@/components/app-logo-icon';
 import { cn } from '@/lib/utils';
 import marketing from '@/routes/marketing';
+import { usePage } from '@inertiajs/react';
 import {
     Activity,
     Briefcase,
@@ -96,7 +97,27 @@ const navigationItems: NavEl[] = [
     },
 ];
 
+function isActive(href: string, currentPath: string): boolean {
+    if (href === '/') return currentPath === '/';
+    if (href === '#') return false;
+    return (
+        currentPath === href ||
+        currentPath.startsWith(href + '/') ||
+        currentPath.startsWith(href)
+    );
+}
+
+function hasActiveChild(
+    children: NavEl[] | undefined,
+    currentPath: string,
+): boolean {
+    return !!children?.some((child) => isActive(child.href, currentPath));
+}
+
 export function Header() {
+    const { url } = usePage();
+    const currentPath = url.split('?')[0];
+
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -180,6 +201,14 @@ export function Header() {
                                             isScrolled
                                                 ? 'text-foreground hover:bg-secondary'
                                                 : 'text-white hover:bg-white/10',
+                                            (isActive(item.href, currentPath) ||
+                                                hasActiveChild(
+                                                    item.children,
+                                                    currentPath,
+                                                )) &&
+                                                (isScrolled
+                                                    ? 'bg-secondary font-semibold text-white'
+                                                    : 'bg-white/15 font-semibold'),
                                             item.className,
                                         )}
                                     >
@@ -215,7 +244,14 @@ export function Header() {
                                                                 href={
                                                                     child.href
                                                                 }
-                                                                className="flex items-center gap-2 px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary hover:text-white"
+                                                                className={cn(
+                                                                    'flex items-center gap-2 px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary hover:text-white',
+                                                                    isActive(
+                                                                        child.href,
+                                                                        currentPath,
+                                                                    ) &&
+                                                                        'bg-secondary/60 font-semibold text-primary',
+                                                                )}
                                                             >
                                                                 {child.icon && (
                                                                     <>
@@ -306,7 +342,15 @@ export function Header() {
                                         onClick={() =>
                                             setIsMobileMenuOpen(false)
                                         }
-                                        className="block text-xl font-semibold text-foreground"
+                                        className={cn(
+                                            'block text-xl font-semibold text-foreground',
+                                            (isActive(item.href, currentPath) ||
+                                                hasActiveChild(
+                                                    item.children,
+                                                    currentPath,
+                                                )) &&
+                                                'text-primary',
+                                        )}
                                     >
                                         {item.label}
                                     </a>
@@ -322,7 +366,14 @@ export function Header() {
                                                             false,
                                                         )
                                                     }
-                                                    className="block flex items-center gap-2 text-base text-muted-foreground hover:text-primary"
+                                                    className={cn(
+                                                        'block flex items-center gap-2 text-base text-muted-foreground hover:text-primary',
+                                                        isActive(
+                                                            child.href,
+                                                            currentPath,
+                                                        ) &&
+                                                            'font-semibold text-primary',
+                                                    )}
                                                 >
                                                     {child.icon && (
                                                         <>{child.icon}</>

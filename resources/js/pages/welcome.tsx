@@ -7,16 +7,24 @@ import Section, { SectionHeader } from '@/components/marketing/Section';
 import StatsGrid from '@/components/marketing/Stats';
 import { ProgramCard, ProjectCard } from '@/components/marketing/Card';
 import {
-    Droplet,
-    GraduationCap,
-    Heart,
-    MapPin,
-    Sprout,
-    Users,
+    BookOpen, Construction, Droplet, Droplets, GraduationCap,
+    Heart, HeartHandshake, Lightbulb, MapPin, Microscope,
+    Search, ShieldCheck, Sprout, Users, Waves, Globe,
 } from 'lucide-react';
+import React from 'react';
 import MissionSection from '@/components/marketing/sections/Mission';
 import ActionsSection from '@/components/marketing/sections/Actions';
 import CTASection from '@/components/marketing/sections/CTA';
+
+interface HomeProgram {
+    id: number;
+    title: string;
+    description: string;
+    icon: string | null;
+    color: string | null;
+    slug: string;
+    href: string;
+}
 
 interface HomeProps {
     stats: {
@@ -43,47 +51,38 @@ interface HomeProps {
         category: string;
         slug: string;
     }>;
+    programs: HomeProgram[];
     canRegister?: boolean;
 }
+
+const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
+    GraduationCap, Construction, Search, Droplets: Droplets,
+    BookOpen, ShieldCheck, Microscope, HeartHandshake,
+    Lightbulb, Sprout, Waves, Globe,
+};
 
 export default function Welcome({
     canRegister = true,
     stats,
     featuredProjects,
     recentNews,
+    programs,
 }: HomeProps) {
     const { auth } = usePage<SharedData>().props;
 
-    const programs = [
-        {
-            icon: <Droplet className="h-6 w-6" />,
-            title: 'Eau & Assainissement',
-            description:
-                "Accès à l'eau potable et systèmes d'assainissement durables pour les communautés.",
-            href: '/programmes/eau-assainissement',
-        },
-        {
-            icon: <GraduationCap className="h-6 w-6" />,
-            title: 'Éducation & Sensibilisation',
-            description:
-                "Programmes éducatifs sur l'hygiène, la santé et la protection de l'environnement.",
-            href: '/programmes/education',
-        },
-        {
-            icon: <Heart className="h-6 w-6" />,
-            title: 'Hygiène & Santé',
-            description:
-                "Promotion des bonnes pratiques d'hygiène et prévention des maladies hydriques.",
-            href: '/programmes/hygiene-sante',
-        },
-        {
-            icon: <Sprout className="h-6 w-6" />,
-            title: 'Protection Environnementale',
-            description:
-                'Conservation des ressources en eau et restauration des écosystèmes aquatiques.',
-            href: '/programmes/environnement',
-        },
-    ];
+    const programCards = programs.length > 0
+        ? programs.map(p => ({
+            icon: (() => { const Icon = ICON_MAP[p.icon ?? ''] ?? Lightbulb; return <Icon className="h-6 w-6" />; })(),
+            title: p.title,
+            description: p.description,
+            href: p.href,
+        }))
+        : [
+            { icon: <Droplet className="h-6 w-6" />, title: 'Eau & Assainissement', description: "Accès à l'eau potable et systèmes d'assainissement durables.", href: '/programs' },
+            { icon: <GraduationCap className="h-6 w-6" />, title: 'Éducation & Sensibilisation', description: "Programmes éducatifs sur l'hygiène et la santé.", href: '/programs' },
+            { icon: <Heart className="h-6 w-6" />, title: 'Hygiène & Santé', description: "Promotion des bonnes pratiques d'hygiène.", href: '/programs' },
+            { icon: <Sprout className="h-6 w-6" />, title: 'Protection Environnementale', description: 'Conservation des ressources en eau.', href: '/programs' },
+        ];
 
     const impactStats = [
         {
@@ -131,7 +130,7 @@ export default function Welcome({
                 />
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {programs.map((program) => (
+                    {programCards.map((program) => (
                         <ProgramCard key={program.title} {...program} />
                     ))}
                 </div>
@@ -154,17 +153,17 @@ export default function Welcome({
                             image={project.image}
                             location={project.location}
                             impact={project.impact}
-                            href={`/projets/${project.slug}`}
+                            href={`/actions/${project.id}`}
                         />
                     ))}
                 </div>
 
                 <div className="mt-12 text-center">
                     <a
-                        href="/projets"
+                        href="/actions"
                         className="inline-flex items-center justify-center rounded-md border border-border bg-background px-6 py-3 text-base font-semibold text-foreground transition-all hover:bg-muted focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none"
                     >
-                        Voir Tous Nos Projets
+                        Voir Toutes Nos Actions
                     </a>
                 </div>
             </Section>

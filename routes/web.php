@@ -69,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Products / programs / projects
 Route::get('/produits', [ProductController::class, 'index'])->name('products.index');
+Route::get('/produits/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs.index');
 Route::get('/programs/{program:slug}', [ProgramsController::class, 'show'])->name('programs.show');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');

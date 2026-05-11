@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Action;
 use App\Models\BlogPost;
+use App\Models\Program;
+use App\Models\Project;
 use App\Models\Volunteer;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -16,6 +18,7 @@ class HomeController extends Controller
             'stats'            => $this->stats(),
             'featuredProjects' => $this->featuredProjects(),
             'recentNews'       => $this->recentNews(),
+            'programs'         => $this->featuredPrograms(),
             'canRegister'      => Features::enabled(Features::registration()),
         ]);
     }
@@ -23,17 +26,35 @@ class HomeController extends Controller
     protected function stats(): array
     {
         $totalParticipants = (int) Action::sum('participants');
-        $totalActions      = Action::count();
+        $totalProjects     = Project::where('is_active', true)->count();
         $totalVolunteers   = Volunteer::count();
 
         return [
             'beneficiaries'     => $totalParticipants > 0
                 ? number_format($totalParticipants, 0, ',', ' ')
                 : '0',
-            'projects'          => (string) $totalActions,
+            'projects'          => (string) ($totalProjects ?: Action::count()),
             'volunteers'        => (string) $totalVolunteers,
             'litersDistributed' => '—',
         ];
+    }
+
+    protected function featuredPrograms(): array
+    {
+        return Program::where('is_active', true)
+            ->orderBy('order')
+            ->take(4)
+            ->get()
+            ->map(fn(Program $p) => [
+                'id'          => $p->id,
+                'title'       => $p->title,
+                'description' => $p->description,
+                'icon'        => $p->icon,
+                'color'       => $p->color,
+                'slug'        => $p->slug,
+                'href'        => "/programs/{$p->slug}",
+            ])
+            ->toArray();
     }
 
     protected function featuredProjects(): array

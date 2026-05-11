@@ -35,7 +35,7 @@ export function ConfirmModal({
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>
+                    <DialogTitle className="text-foreground">
                         {' '}
                         {icon && <div className="modal-icon">{icon}</div>}
                         {title}
