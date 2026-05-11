@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\Admin\AdminActionController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -79,6 +80,13 @@ Route::get('dashboard', function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/actions', [AdminActionController::class, 'index'])->name('actions.index');
+    Route::get('/actions/create', [AdminActionController::class, 'create'])->name('actions.create');
+    Route::post('/actions', [AdminActionController::class, 'store'])->name('actions.store');
+    Route::get('/actions/{action}/edit', [AdminActionController::class, 'edit'])->name('actions.edit');
+    Route::put('/actions/{action}', [AdminActionController::class, 'update'])->name('actions.update');
+    Route::delete('/actions/{action}', [AdminActionController::class, 'destroy'])->name('actions.destroy');
+
     Route::get('/donations', [AdminDonationController::class, 'index'])->name('donations.index');
     Route::patch('/donations/{donation}/status', [AdminDonationController::class, 'updateStatus'])->name('donations.status');
 
@@ -86,6 +94,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     Route::patch('/volunteers/{volunteer}/status', [AdminVolunteerController::class, 'updateStatus'])->name('volunteers.status');
 
     Route::get('/messages', [AdminContactController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{contactMessage}', [AdminContactController::class, 'show'])->name('messages.show');
     Route::patch('/messages/{contactMessage}/status', [AdminContactController::class, 'updateStatus'])->name('messages.status');
 
     Route::get('/blog', [AdminBlogController::class, 'index'])->name('blog.index');

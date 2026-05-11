@@ -32,7 +32,7 @@ class BlogPostController extends Controller
                 'title'    => $post->title,
                 'excerpt'  => $post->excerpt,
                 'image'    => $post->image,
-                'date'     => $post->published_at?->format('d F Y'),
+                'date'     => $post->published_at?->locale('fr')->isoFormat('D MMMM YYYY'),
                 'author'   => $post->author?->name ?? 'Asproqualee',
                 'category' => $post->category?->name ?? '',
                 'tags'     => $post->tags->pluck('name'),
@@ -49,6 +49,8 @@ class BlogPostController extends Controller
 
     public function show(BlogPost $blogPost)
     {
+        abort_if($blogPost->status !== 'published', 404);
+
         return Inertia::render('marketing/Blog/Details', [
             'post' => $blogPost->load(['author:id,name', 'category:id,name', 'tags:id,name']),
         ]);

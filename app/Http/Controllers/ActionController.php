@@ -28,7 +28,7 @@ class ActionController extends Controller
         ];
 
         return Inertia::render('marketing/Actions/Index', [
-            'actions'    => ActionResource::collection($actions),
+            'actions'    => ActionResource::collection($actions)->resolve(),
             'categories' => $categories,
             'stats'      => $stats,
             'filters'    => [
@@ -49,7 +49,7 @@ class ActionController extends Controller
 
         return Inertia::render('marketing/Actions/Details', [
             'action'         => new ActionResource($action->load('category', 'gallery')),
-            'relatedActions' => ActionResource::collection($relatedActions),
+            'relatedActions' => ActionResource::collection($relatedActions)->resolve(),
         ]);
     }
 }

@@ -30,6 +30,12 @@ const STATUS_COLORS: Record<string, string> = {
     resolved: 'bg-green-100 text-green-700',
 };
 
+const STATUS_LABELS: Record<string, string> = {
+    new: 'Nouveau',
+    read: 'Lu',
+    resolved: 'Résolu',
+};
+
 const STATUS_OPTIONS = [
     { value: '', label: 'Tous' },
     { value: 'new', label: 'Nouveaux' },
@@ -93,12 +99,12 @@ export default function AdminMessages() {
                         messages.data.map((msg) => (
                             <div
                                 key={msg.id}
-                                className="rounded-xl border border-border bg-card p-5"
+                                className="rounded-xl border border-border bg-card p-5 transition-colors hover:bg-muted/20"
                             >
                                 <div className="flex items-start justify-between gap-4">
-                                    <div className="flex-1">
+                                    <Link href={`/admin/messages/${msg.id}`} className="flex-1 min-w-0">
                                         <div className="mb-1 flex items-center gap-3">
-                                            <span className="font-semibold text-foreground">
+                                            <span className={cn('font-semibold text-foreground', msg.status === 'new' && 'text-primary')}>
                                                 {msg.name}
                                             </span>
                                             <span className="text-sm text-muted-foreground">
@@ -116,7 +122,7 @@ export default function AdminMessages() {
                                                         'bg-muted text-muted-foreground',
                                                 )}
                                             >
-                                                {msg.status}
+                                                {STATUS_LABELS[msg.status] ?? msg.status}
                                             </span>
                                         </div>
                                         {msg.subject && (
@@ -124,15 +130,13 @@ export default function AdminMessages() {
                                                 {msg.subject}
                                             </div>
                                         )}
-                                        <p className="text-sm text-muted-foreground">
+                                        <p className="line-clamp-2 text-sm text-muted-foreground">
                                             {msg.message}
                                         </p>
-                                    </div>
+                                    </Link>
                                     <div className="flex shrink-0 flex-col items-end gap-2">
                                         <span className="text-xs text-muted-foreground">
-                                            {new Date(
-                                                msg.created_at,
-                                            ).toLocaleDateString('fr-FR')}
+                                            {new Date(msg.created_at).toLocaleDateString('fr-FR')}
                                         </span>
                                         <select
                                             value={msg.status}

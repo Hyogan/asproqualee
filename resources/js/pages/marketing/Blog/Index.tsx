@@ -1,7 +1,7 @@
 import HeroSection from '@/components/marketing/HeroSection';
 import MainLayout from '@/layouts/app/app-main-layout';
 import { cn } from '@/lib/utils';
-import { router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import { ArrowRight, Calendar, Filter, Search, User } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -29,7 +29,13 @@ interface Props extends Record<string, unknown> {
     filters: { search: string; category: string };
 }
 
-function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boolean }) {
+function BlogCard({
+    post,
+    featured = false,
+}: {
+    post: BlogPost;
+    featured?: boolean;
+}) {
     return (
         <article
             className={cn(
@@ -39,7 +45,17 @@ function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boole
                     : 'hover:scale-[1.02] hover:shadow-xl',
             )}
         >
-            <div className={cn('relative overflow-hidden', featured ? 'md:w-1/2' : 'h-56')}>
+            <a
+                href={`/blog/post/${post.slug}`}
+                className="absolute inset-0 z-10"
+                aria-label={post.title}
+            />
+            <div
+                className={cn(
+                    'relative overflow-hidden',
+                    featured ? 'md:w-1/2' : 'h-56',
+                )}
+            >
                 {post.image && (
                     <img
                         src={post.image}
@@ -53,7 +69,12 @@ function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boole
                 </div>
             </div>
 
-            <div className={cn('p-6', featured && 'flex flex-col justify-center md:w-1/2')}>
+            <div
+                className={cn(
+                    'p-6',
+                    featured && 'flex flex-col justify-center md:w-1/2',
+                )}
+            >
                 <div className="mb-3 flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1.5">
                         <Calendar className="h-4 w-4" />
@@ -66,54 +87,64 @@ function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boole
                     {post.readTime && <span>{post.readTime} de lecture</span>}
                 </div>
 
-                <h3 className={cn('mb-3 font-bold transition-colors group-hover:text-primary', featured ? 'text-2xl md:text-3xl' : 'text-xl')}>
+                <h3
+                    className={cn(
+                        'mb-3 font-bold text-muted-foreground transition-colors group-hover:text-primary',
+                        featured ? 'text-2xl md:text-3xl' : 'text-xl',
+                    )}
+                >
                     {post.title}
                 </h3>
 
-                <p className="mb-4 line-clamp-3 text-muted-foreground">{post.excerpt}</p>
+                <p className="mb-4 line-clamp-3 text-muted-foreground">
+                    {post.excerpt}
+                </p>
 
                 <div className="mb-4 flex flex-wrap gap-2">
                     {post.tags.map((tag, index) => (
-                        <span key={index} className="rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground">
+                        <span
+                            key={index}
+                            className="rounded-md bg-secondary px-2 py-1 text-xs text-white"
+                        >
                             #{tag}
                         </span>
                     ))}
                 </div>
 
-                <a
-                    href={`/blog/post/${post.slug}`}
-                    className="inline-flex items-center font-semibold text-primary transition-all group-hover:gap-2"
-                >
+                <span className="relative z-20 inline-flex items-center font-semibold text-primary transition-all group-hover:gap-2">
                     Lire l'article
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </span>
             </div>
         </article>
     );
 }
 
 export default function BlogPage() {
-    const { posts, categories: rawCategories, filters } = usePage<Props>().props;
+    const {
+        posts,
+        categories: rawCategories,
+        filters,
+    } = usePage<Props>().props;
 
     const [searchQuery, setSearchQuery] = useState(filters.search ?? '');
-    const [selectedCategory, setSelectedCategory] = useState(filters.category || 'Tous');
+    const [selectedCategory, setSelectedCategory] = useState(
+        filters.category || 'Tous',
+    );
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const categories = ['Tous', ...rawCategories];
 
-    const search = useCallback(
-        (query: string, category: string) => {
-            router.get(
-                '/blog',
-                {
-                    ...(query ? { search: query } : {}),
-                    ...(category && category !== 'Tous' ? { category } : {}),
-                },
-                { preserveState: true, replace: true },
-            );
-        },
-        [],
-    );
+    const search = useCallback((query: string, category: string) => {
+        router.get(
+            '/blog',
+            {
+                ...(query ? { search: query } : {}),
+                ...(category && category !== 'Tous' ? { category } : {}),
+            },
+            { preserveState: true, replace: true },
+        );
+    }, []);
 
     // Debounce text search
     useEffect(() => {
@@ -138,6 +169,7 @@ export default function BlogPage() {
             title="Actualités & Blog sur l'Eau et la Santé | Asproqualee"
             description="Découvrez nos articles, actions et conseils pour protéger l'eau et améliorer la santé publique."
         >
+            <Head title="Actualités & Blog | Asproqualee" />
             <main className="min-h-screen">
                 <HeroSection
                     title="Actualités & Blog"
@@ -157,7 +189,9 @@ export default function BlogPage() {
                                         type="text"
                                         placeholder="Rechercher un article..."
                                         value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        onChange={(e) =>
+                                            setSearchQuery(e.target.value)
+                                        }
                                         className="w-full rounded-lg border border-input bg-background py-3 pr-4 pl-12 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:outline-none"
                                     />
                                 </div>
@@ -167,7 +201,9 @@ export default function BlogPage() {
                                     {categories.map((category) => (
                                         <button
                                             key={category}
-                                            onClick={() => handleCategoryChange(category)}
+                                            onClick={() =>
+                                                handleCategoryChange(category)
+                                            }
                                             className={cn(
                                                 'rounded-lg px-4 py-2 font-medium whitespace-nowrap transition-all',
                                                 selectedCategory === category
@@ -195,7 +231,9 @@ export default function BlogPage() {
                             </div>
                         ) : (
                             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
-                                {featuredPost && <BlogCard post={featuredPost} featured />}
+                                {featuredPost && (
+                                    <BlogCard post={featuredPost} featured />
+                                )}
                                 {otherPosts.map((post) => (
                                     <BlogCard key={post.id} post={post} />
                                 ))}
@@ -210,7 +248,9 @@ export default function BlogPage() {
                                             <a
                                                 key={i}
                                                 href={link.url}
-                                                dangerouslySetInnerHTML={{ __html: link.label }}
+                                                dangerouslySetInnerHTML={{
+                                                    __html: link.label,
+                                                }}
                                                 className={cn(
                                                     'rounded-lg px-4 py-2 text-sm font-semibold transition-all',
                                                     link.active
@@ -233,7 +273,8 @@ export default function BlogPage() {
                                 Ne manquez aucune actualité
                             </h2>
                             <p className="mb-6 text-lg text-white/90">
-                                Inscrivez-vous à notre newsletter pour recevoir nos derniers articles et suivre nos actions
+                                Inscrivez-vous à notre newsletter pour recevoir
+                                nos derniers articles et suivre nos actions
                             </p>
                             <div className="flex gap-3">
                                 <input

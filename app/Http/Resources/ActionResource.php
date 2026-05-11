@@ -20,7 +20,7 @@ class ActionResource extends JsonResource
             'description' => $this->description,
             'longDescription' => $this->long_description,
             'image' => $this->image,
-            'date' => $this->date->format('d F Y'),
+            'date' => $this->date->locale('fr')->isoFormat('D MMMM YYYY'),
             'location' => $this->location,
             'participants' => $this->participants,
             'impact' => [

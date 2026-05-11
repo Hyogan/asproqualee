@@ -23,6 +23,17 @@ class AdminContactController extends Controller
         ]);
     }
 
+    public function show(ContactMessage $contactMessage)
+    {
+        if ($contactMessage->status === 'new') {
+            $contactMessage->update(['status' => 'read']);
+        }
+
+        return Inertia::render('admin/Messages/Show', [
+            'message' => $contactMessage->fresh(),
+        ]);
+    }
+
     public function updateStatus(Request $request, ContactMessage $contactMessage)
     {
         $request->validate([
