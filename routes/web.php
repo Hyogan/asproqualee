@@ -3,6 +3,9 @@
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\Admin\AdminActionController;
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminProgramController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDonationController;
@@ -67,7 +70,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Products / programs / projects
 Route::get('/produits', [ProductController::class, 'index'])->name('products.index');
 Route::get('/programs', [ProgramsController::class, 'index'])->name('programs.index');
+Route::get('/programs/{program:slug}', [ProgramsController::class, 'show'])->name('programs.show');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 // ─── Authenticated area ───────────────────────────────────────────────────────
 
@@ -103,6 +108,30 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     Route::get('/blog/{blogPost}/edit', [AdminBlogController::class, 'edit'])->name('blog.edit');
     Route::put('/blog/{blogPost}', [AdminBlogController::class, 'update'])->name('blog.update');
     Route::delete('/blog/{blogPost}', [AdminBlogController::class, 'destroy'])->name('blog.destroy');
+
+    // Programs
+    Route::get('/programs', [AdminProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/create', [AdminProgramController::class, 'create'])->name('programs.create');
+    Route::post('/programs', [AdminProgramController::class, 'store'])->name('programs.store');
+    Route::get('/programs/{program}/edit', [AdminProgramController::class, 'edit'])->name('programs.edit');
+    Route::put('/programs/{program}', [AdminProgramController::class, 'update'])->name('programs.update');
+    Route::delete('/programs/{program}', [AdminProgramController::class, 'destroy'])->name('programs.destroy');
+
+    // Products
+    Route::get('/products', [AdminProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [AdminProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
+
+    // Projects
+    Route::get('/projects', [AdminProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
+    Route::post('/projects', [AdminProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{project}', [AdminProjectController::class, 'update'])->name('projects.update');
+    Route::delete('/projects/{project}', [AdminProjectController::class, 'destroy'])->name('projects.destroy');
 
     // Taxonomy
     Route::get('/categories', [AdminTaxonomyController::class, 'categories'])->name('categories.index');

@@ -12,11 +12,11 @@ class ActionResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'category' => [
-                'id' => $this->category->id,
+            'category' => $this->category ? [
+                'id'   => $this->category->id,
                 'name' => $this->category->name,
                 'icon' => $this->category->icon,
-            ],
+            ] : null,
             'description' => $this->description,
             'longDescription' => $this->long_description,
             'image' => $this->image,

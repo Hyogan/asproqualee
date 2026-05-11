@@ -5,9 +5,12 @@ import {
     Activity,
     Briefcase,
     ChevronDown,
+    HandHeart,
     Layers,
     LucideIcon,
     Menu,
+    Newspaper,
+    ShoppingBag,
     X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -74,9 +77,21 @@ const navigationItems: NavEl[] = [
         label: 'Plus',
         href: '#',
         children: [
-            { label: "S'impliquer", href: '/get-involved' },
-            { label: 'Actualités', href: '/blog' },
-            { label: 'Produits', href: '/produits' },
+            {
+                label: "S'impliquer",
+                href: '/get-involved',
+                icon: <HandHeart className="h-5 w-5" />,
+            },
+            {
+                label: 'Actualités',
+                href: '/blog',
+                icon: <Newspaper className="h-5 w-5" />,
+            },
+            {
+                label: 'Produits',
+                href: '/produits',
+                icon: <ShoppingBag className="h-5 w-5" />,
+            },
         ],
     },
 ];

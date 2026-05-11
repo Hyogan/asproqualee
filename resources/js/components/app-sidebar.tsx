@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, DollarSign, LayoutGrid, Mail, Tag, Tags, Users, Zap } from 'lucide-react';
+import { BookOpen, DollarSign, Folder, GraduationCap, LayoutGrid, Mail, ShoppingBag, Tag, Tags, Users, Zap } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -27,6 +27,9 @@ const mainNavItems: NavItem[] = [
 const adminNavItems: NavItem[] = [
     { title: 'Tableau de bord', href: '/admin',              icon: LayoutGrid },
     { title: 'Actions',         href: '/admin/actions',      icon: Zap },
+    { title: 'Programmes',      href: '/admin/programs',     icon: GraduationCap },
+    { title: 'Produits',        href: '/admin/products',     icon: ShoppingBag },
+    { title: 'Projets',         href: '/admin/projects',     icon: Folder },
     { title: 'Dons',            href: '/admin/donations',    icon: DollarSign },
     { title: 'Bénévoles',       href: '/admin/volunteers',   icon: Users },
     { title: 'Messages',        href: '/admin/messages',     icon: Mail },

@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
 interface Action {
     id: string;
     title: string;
-    category: { name: string };
+    category: { name: string } | null;
     description: string;
     longDescription: string;
     image: string;
@@ -73,9 +73,11 @@ export default function ActionDetailPage({
                                       ? 'En cours'
                                       : 'À venir'}
                             </span>
-                            <span className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
-                                {action.category.name}
-                            </span>
+                            {action.category && (
+                                <span className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
+                                    {action.category.name}
+                                </span>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -88,22 +90,31 @@ export default function ActionDetailPage({
                         <section className="container mx-auto mt-8 flex flex-wrap justify-around gap-6 rounded-lg bg-gradient-to-b from-primary/10 to-transparent px-4 py-8">
                             <div className="flex items-center gap-2">
                                 <Calendar className="h-5 w-5 text-primary" />
-                                <div>{action.date}</div>
+                                <div className="text-primary">
+                                    {action.date}
+                                </div>
                             </div>
                             <div className="flex items-center gap-2">
                                 <MapPin className="h-5 w-5 text-primary" />
-                                <div>{action.location}</div>
+                                <div className="text-primary">
+                                    {action.location}
+                                </div>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Users className="h-5 w-5 text-primary" />
-                                <div>{action.participants} bénévoles</div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Info className="h-5 w-5 text-primary" />
-                                <div>
-                                    {action.impact.label}: {action.impact.value}
+                                <div className="text-primary">
+                                    {action.participants} bénévoles
                                 </div>
                             </div>
+                            {(action.impact?.label || action.impact?.value) && (
+                                <div className="flex items-center gap-2">
+                                    <Info className="h-5 w-5 text-primary" />
+                                    <div className="text-primary">
+                                        {action.impact.label}:{' '}
+                                        {action.impact.value}
+                                    </div>
+                                </div>
+                            )}
                         </section>
 
                         {/* Story Section */}
@@ -117,14 +128,16 @@ export default function ActionDetailPage({
                             </p>
                         </section>
                         {/* Impact */}
-                        <div className="rounded-lg border-l-4 border-primary bg-primary/10 p-4">
-                            <div className="text-sm text-muted-foreground">
-                                {action.impact.label}
+                        {(action.impact?.label || action.impact?.value) && (
+                            <div className="rounded-lg border-l-4 border-primary bg-primary/10 p-4">
+                                <div className="text-sm text-muted-foreground">
+                                    {action.impact.label}
+                                </div>
+                                <div className="text-2xl font-bold text-primary">
+                                    {action.impact.value}
+                                </div>
                             </div>
-                            <div className="text-2xl font-bold text-primary">
-                                {action.impact.value}
-                            </div>
-                        </div>
+                        )}
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4">
@@ -143,9 +156,9 @@ export default function ActionDetailPage({
                         </div>
 
                         {/* Gallery */}
-                        {action.gallery.length > 0 && (
+                        {(action.gallery?.length ?? 0) > 0 && (
                             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                                {action.gallery.map((img, idx) => (
+                                {(action.gallery ?? []).map((img, idx) => (
                                     <img
                                         key={idx}
                                         src={img}
@@ -181,7 +194,7 @@ export default function ActionDetailPage({
                                             {rel.title}
                                         </div>
                                         <div className="mt-1 text-xs text-muted-foreground">
-                                            {rel.category.name}
+                                            {rel.category?.name}
                                         </div>
                                         <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
                                             <Calendar className="h-3 w-3 text-primary" />

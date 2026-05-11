@@ -48,7 +48,7 @@ class ActionController extends Controller
             ->get();
 
         return Inertia::render('marketing/Actions/Details', [
-            'action'         => new ActionResource($action->load('category', 'gallery')),
+            'action'         => (new ActionResource($action->load('category', 'gallery')))->resolve(),
             'relatedActions' => ActionResource::collection($relatedActions)->resolve(),
         ]);
     }
