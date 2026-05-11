@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->hasMany(Action::class);
     }
+
+    public function blogPosts(): HasMany
+    {
+        return $this->hasMany(BlogPost::class);
+    }
 }

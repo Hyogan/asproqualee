@@ -87,7 +87,7 @@
     /* Accent - Navy */
     --accent: #055288;
     --accent-light: #1a6faa;
-    --accent-foreground: #ffffff;
+    --accent-foreground: #c0edff;
 
     /* Neutral */
     --background: #f8fbfe;
@@ -169,7 +169,6 @@
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
 }
-
 
 /* Dark mode intentionally mirrors light — keeps brand consistency */
 .dark {

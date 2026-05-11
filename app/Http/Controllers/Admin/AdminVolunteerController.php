@@ -17,6 +17,8 @@ class AdminVolunteerController extends Controller
             ->paginate(20)
             ->withQueryString();
 
+        // dd($volunteers);
+
         return Inertia::render('admin/Volunteers', [
             'volunteers' => $volunteers,
             'filters'    => ['status' => $request->get('status', '')],

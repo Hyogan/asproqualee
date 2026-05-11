@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, DollarSign, LayoutGrid, Mail, Users } from 'lucide-react';
+import { BookOpen, DollarSign, LayoutGrid, Mail, Tag, Tags, Users } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -25,11 +25,13 @@ const mainNavItems: NavItem[] = [
 ];
 
 const adminNavItems: NavItem[] = [
-    { title: 'Tableau de bord', href: '/admin',            icon: LayoutGrid },
-    { title: 'Dons',            href: '/admin/donations',  icon: DollarSign },
-    { title: 'Bénévoles',       href: '/admin/volunteers', icon: Users },
-    { title: 'Messages',        href: '/admin/messages',   icon: Mail },
-    { title: 'Blog',            href: '/admin/blog',       icon: BookOpen },
+    { title: 'Tableau de bord', href: '/admin',              icon: LayoutGrid },
+    { title: 'Dons',            href: '/admin/donations',    icon: DollarSign },
+    { title: 'Bénévoles',       href: '/admin/volunteers',   icon: Users },
+    { title: 'Messages',        href: '/admin/messages',     icon: Mail },
+    { title: 'Articles',        href: '/admin/blog',         icon: BookOpen },
+    { title: 'Catégories',      href: '/admin/categories',   icon: Tags },
+    { title: 'Tags',            href: '/admin/tags',         icon: Tag },
 ];
 
 export function AppSidebar() {

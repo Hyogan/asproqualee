@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDonationController;
+use App\Http\Controllers\Admin\AdminTaxonomyController;
 use App\Http\Controllers\Admin\AdminVolunteerController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\DonateController;
@@ -93,6 +94,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     Route::get('/blog/{blogPost}/edit', [AdminBlogController::class, 'edit'])->name('blog.edit');
     Route::put('/blog/{blogPost}', [AdminBlogController::class, 'update'])->name('blog.update');
     Route::delete('/blog/{blogPost}', [AdminBlogController::class, 'destroy'])->name('blog.destroy');
+
+    // Taxonomy
+    Route::get('/categories', [AdminTaxonomyController::class, 'categories'])->name('categories.index');
+    Route::post('/categories', [AdminTaxonomyController::class, 'storeCategory'])->name('categories.store');
+    Route::put('/categories/{category}', [AdminTaxonomyController::class, 'updateCategory'])->name('categories.update');
+    Route::delete('/categories/{category}', [AdminTaxonomyController::class, 'destroyCategory'])->name('categories.destroy');
+
+    Route::get('/tags', [AdminTaxonomyController::class, 'tags'])->name('tags.index');
+    Route::post('/tags', [AdminTaxonomyController::class, 'storeTag'])->name('tags.store');
+    Route::put('/tags/{tag}', [AdminTaxonomyController::class, 'updateTag'])->name('tags.update');
+    Route::delete('/tags/{tag}', [AdminTaxonomyController::class, 'destroyTag'])->name('tags.destroy');
 });
 
 require __DIR__ . '/settings.php';

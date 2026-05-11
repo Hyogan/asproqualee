@@ -75,7 +75,7 @@ export default function AdminBlogForm() {
 
     const editor = useEditor({
         extensions: [
-            StarterKit,
+            StarterKit.configure({ link: false }),
             Link.configure({ openOnClick: false }),
             Placeholder.configure({ placeholder: 'Rédigez votre article ici…' }),
         ],
@@ -106,7 +106,7 @@ export default function AdminBlogForm() {
         const payload = { ...form, content, tags: form.tag_ids };
 
         if (isEditing) {
-            router.put(`/admin/blog/${post!.id}`, payload, {
+            router.put(`/admin/blog/${post!.slug}`, payload, {
                 onError: setErrors,
             });
         } else {

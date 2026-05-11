@@ -10,7 +10,7 @@ import {
     Sprout,
     Users,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Category {
     id: number;
@@ -147,6 +147,10 @@ function ActionCard({ action }: { action: Action }) {
 export default function ActionsPage() {
     const { actions, categories, stats, filters } = usePage<Props>().props;
 
+    useEffect(() => {
+        console.log(actions);
+    }, []);
+
     const [selectedCategory, setSelectedCategory] = useState<string>(
         filters.category || 'all',
     );
@@ -175,7 +179,10 @@ export default function ActionsPage() {
         applyFilters(selectedCategory, status);
     };
 
-    const allCategories = [{ id: 'all', name: 'Toutes' }, ...categories.map(c => ({ id: String(c.id), name: c.name }))];
+    const allCategories = [
+        { id: 'all', name: 'Toutes' },
+        ...categories.map((c) => ({ id: String(c.id), name: c.name })),
+    ];
 
     return (
         <MainLayout
@@ -202,10 +209,26 @@ export default function ActionsPage() {
                     <div className="container mx-auto px-4">
                         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4">
                             {[
-                                { label: 'Actions menées', value: stats.total_actions, suffix: '' },
-                                { label: 'Bénévoles mobilisés', value: stats.total_volunteers, suffix: '+' },
-                                { label: 'Personnes impactées', value: stats.total_impacted, suffix: '+' },
-                                { label: 'Km de rivières nettoyés', value: stats.km_cleaned, suffix: '' },
+                                {
+                                    label: 'Actions menées',
+                                    value: stats.total_actions,
+                                    suffix: '',
+                                },
+                                {
+                                    label: 'Bénévoles mobilisés',
+                                    value: stats.total_volunteers,
+                                    suffix: '+',
+                                },
+                                {
+                                    label: 'Personnes impactées',
+                                    value: stats.total_impacted,
+                                    suffix: '+',
+                                },
+                                {
+                                    label: 'Km de rivières nettoyés',
+                                    value: stats.km_cleaned,
+                                    suffix: '',
+                                },
                             ].map((stat, index) => (
                                 <div key={index} className="text-center">
                                     <div className="mb-1 text-3xl font-bold text-primary md:text-4xl">
@@ -236,7 +259,11 @@ export default function ActionsPage() {
                                     {allCategories.map((category) => (
                                         <button
                                             key={category.id}
-                                            onClick={() => handleCategoryChange(category.id)}
+                                            onClick={() =>
+                                                handleCategoryChange(
+                                                    category.id,
+                                                )
+                                            }
                                             className={cn(
                                                 'flex items-center gap-2 rounded-lg px-4 py-2 font-medium transition-all',
                                                 selectedCategory === category.id
@@ -259,7 +286,9 @@ export default function ActionsPage() {
                                 </div>
                                 <select
                                     value={selectedStatus}
-                                    onChange={(e) => handleStatusChange(e.target.value)}
+                                    onChange={(e) =>
+                                        handleStatusChange(e.target.value)
+                                    }
                                     className="rounded-lg border border-input bg-background px-4 py-2 text-foreground focus:ring-2 focus:ring-ring focus:outline-none"
                                 >
                                     <option value="all">Tous</option>
@@ -285,7 +314,10 @@ export default function ActionsPage() {
                         ) : (
                             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                                 {actions.map((action) => (
-                                    <ActionCard key={action.id} action={action} />
+                                    <ActionCard
+                                        key={action.id}
+                                        action={action}
+                                    />
                                 ))}
                             </div>
                         )}

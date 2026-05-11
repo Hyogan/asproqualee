@@ -17,6 +17,7 @@ class Volunteer extends Model
         'availability',
         'motivation',
         'experience',
+        'status',
     ];
 
     protected $casts = [
