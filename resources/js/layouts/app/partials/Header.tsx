@@ -69,15 +69,15 @@ export default function Header() {
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="group flex items-center gap-3">
-                    {/* <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] shadow-md transition-all group-hover:scale-105 group-hover:shadow-lg">
+                    {/* <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#03b6ed] to-[#0299c9] shadow-md transition-all group-hover:scale-105 group-hover:shadow-lg">
                         <Droplet className="h-7 w-7 text-white" />
-                        <div className="absolute -right-1 -bottom-1 h-4 w-4 rounded-full border-2 border-white bg-[#F28482]" />
+                        <div className="absolute -right-1 -bottom-1 h-4 w-4 rounded-full border-2 border-white bg-[#055288]" />
                     </div>
                     <div className="hidden sm:block">
-                        <div className="text-base font-bold text-[#2D3E3F]">
+                        <div className="text-base font-bold text-[#0b2a3d]">
                             Association
                         </div>
-                        <div className="text-xs font-medium text-[#6B7C7D]">
+                        <div className="text-xs font-medium text-[#4a6a7d]">
                             Eau & Environnement
                         </div>
                     </div> */}
@@ -96,14 +96,14 @@ export default function Header() {
                             onMouseLeave={() => setOpenDropdown(null)}
                         >
                             {item.children ? (
-                                <button className="flex items-center gap-1 text-sm font-semibold text-[#2D3E3F] transition-colors hover:text-[#5CBDB9]">
+                                <button className="flex items-center gap-1 text-sm font-semibold text-[#0b2a3d] transition-colors hover:text-[#03b6ed]">
                                     {item.label}
                                     <ChevronDown className="h-4 w-4" />
                                 </button>
                             ) : (
                                 <Link
                                     href={item.href}
-                                    className="text-sm font-semibold text-[#2D3E3F] transition-colors hover:text-[#5CBDB9]"
+                                    className="text-sm font-semibold text-[#0b2a3d] transition-colors hover:text-[#03b6ed]"
                                 >
                                     {item.label}
                                 </Link>
@@ -117,7 +117,7 @@ export default function Header() {
                                             <Link
                                                 key={child.href}
                                                 href={child.href}
-                                                className="block rounded-xl px-4 py-3 text-sm font-medium text-[#2D3E3F] transition-all hover:bg-[#5CBDB9]/10 hover:text-[#5CBDB9]"
+                                                className="block rounded-xl px-4 py-3 text-sm font-medium text-[#0b2a3d] transition-all hover:bg-[#03b6ed]/10 hover:text-[#03b6ed]"
                                             >
                                                 {child.label}
                                             </Link>
@@ -133,13 +133,13 @@ export default function Header() {
                 <div className="hidden lg:flex lg:items-center lg:gap-x-4">
                     <Link
                         href="/contact"
-                        className="rounded-xl px-4 py-2 text-sm font-semibold text-[#2D3E3F] transition-colors hover:bg-[#F5F3F0]"
+                        className="rounded-xl px-4 py-2 text-sm font-semibold text-[#0b2a3d] transition-colors hover:bg-[#F5F3F0]"
                     >
                         Contact
                     </Link>
                     <Link
                         href="/sengager/don"
-                        className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                        className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#03b6ed] to-[#0299c9] px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
                     >
                         <span className="relative z-10">Faire un Don</span>
                         <div className="absolute inset-0 origin-left scale-x-0 transform bg-white/20 transition-transform group-hover:scale-x-100" />
@@ -149,7 +149,7 @@ export default function Header() {
                 {/* Mobile Menu Button */}
                 <button
                     type="button"
-                    className="rounded-xl p-2 text-[#2D3E3F] transition-colors hover:bg-[#F5F3F0] lg:hidden"
+                    className="rounded-xl p-2 text-[#0b2a3d] transition-colors hover:bg-[#F5F3F0] lg:hidden"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? (
@@ -176,7 +176,7 @@ export default function Header() {
                                                         : item.label,
                                                 )
                                             }
-                                            className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-[#2D3E3F] transition-colors hover:bg-[#F5F3F0]"
+                                            className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-[#0b2a3d] transition-colors hover:bg-[#F5F3F0]"
                                         >
                                             {item.label}
                                             <ChevronDown
@@ -193,7 +193,7 @@ export default function Header() {
                                                     <Link
                                                         key={child.href}
                                                         href={child.href}
-                                                        className="block rounded-xl px-4 py-2 text-sm font-medium text-[#6B7C7D] transition-all hover:bg-[#5CBDB9]/10 hover:text-[#5CBDB9]"
+                                                        className="block rounded-xl px-4 py-2 text-sm font-medium text-[#4a6a7d] transition-all hover:bg-[#03b6ed]/10 hover:text-[#03b6ed]"
                                                         onClick={() =>
                                                             setMobileMenuOpen(
                                                                 false,
@@ -209,7 +209,7 @@ export default function Header() {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className="block rounded-xl px-4 py-3 text-base font-semibold text-[#2D3E3F] transition-colors hover:bg-[#F5F3F0]"
+                                        className="block rounded-xl px-4 py-3 text-base font-semibold text-[#0b2a3d] transition-colors hover:bg-[#F5F3F0]"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         {item.label}
@@ -222,14 +222,14 @@ export default function Header() {
                         <div className="mt-6 space-y-3 border-t-2 border-[#E8E5E0] pt-6">
                             <Link
                                 href="/contact"
-                                className="block w-full rounded-xl px-4 py-3 text-center text-sm font-semibold text-[#2D3E3F] transition-colors hover:bg-[#F5F3F0]"
+                                className="block w-full rounded-xl px-4 py-3 text-center text-sm font-semibold text-[#0b2a3d] transition-colors hover:bg-[#F5F3F0]"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Contact
                             </Link>
                             <Link
                                 href="/sengager/don"
-                                className="block w-full rounded-2xl bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] px-6 py-3 text-center text-sm font-bold text-white shadow-md"
+                                className="block w-full rounded-2xl bg-gradient-to-r from-[#03b6ed] to-[#0299c9] px-6 py-3 text-center text-sm font-bold text-white shadow-md"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Faire un Don

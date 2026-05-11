@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminDonationController;
+use App\Http\Controllers\Admin\AdminVolunteerController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\HomeController;
@@ -36,6 +41,9 @@ Route::get('/water-health', [WaterHealthController::class, 'index'])->name('wate
 
 // Engagement
 Route::get('/get-involved', [VolunteerController::class, 'index'])->name('volunteer.index');
+Route::post('/volunteer/apply', [VolunteerController::class, 'store'])
+    ->middleware('throttle:10,1')
+    ->name('volunteer.store');
 
 Route::get('/donate', [DonateController::class, 'create'])->name('donate.create');
 Route::post('/donate/confirm', [DonateController::class, 'store'])
@@ -64,5 +72,27 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('dashboard', function () {
     return \Inertia\Inertia::render('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// ─── Admin panel ──────────────────────────────────────────────────────────────
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin'])->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/donations', [AdminDonationController::class, 'index'])->name('donations.index');
+    Route::patch('/donations/{donation}/status', [AdminDonationController::class, 'updateStatus'])->name('donations.status');
+
+    Route::get('/volunteers', [AdminVolunteerController::class, 'index'])->name('volunteers.index');
+    Route::patch('/volunteers/{volunteer}/status', [AdminVolunteerController::class, 'updateStatus'])->name('volunteers.status');
+
+    Route::get('/messages', [AdminContactController::class, 'index'])->name('messages.index');
+    Route::patch('/messages/{contactMessage}/status', [AdminContactController::class, 'updateStatus'])->name('messages.status');
+
+    Route::get('/blog', [AdminBlogController::class, 'index'])->name('blog.index');
+    Route::get('/blog/create', [AdminBlogController::class, 'create'])->name('blog.create');
+    Route::post('/blog', [AdminBlogController::class, 'store'])->name('blog.store');
+    Route::get('/blog/{blogPost}/edit', [AdminBlogController::class, 'edit'])->name('blog.edit');
+    Route::put('/blog/{blogPost}', [AdminBlogController::class, 'update'])->name('blog.update');
+    Route::delete('/blog/{blogPost}', [AdminBlogController::class, 'destroy'])->name('blog.destroy');
+});
 
 require __DIR__ . '/settings.php';

@@ -68,28 +68,28 @@ export default function Donate() {
             />
             <section className="relative overflow-hidden bg-gradient-to-br from-[#F5F3F0] via-white to-[#E8F5F4] py-20 lg:py-24">
                 <div className="absolute inset-0">
-                    <div className="absolute top-20 right-10 h-96 w-96 rounded-full bg-[#5CBDB9]/5 blur-3xl" />
-                    <div className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-[#F28482]/5 blur-3xl" />
+                    <div className="absolute top-20 right-10 h-96 w-96 rounded-full bg-[#03b6ed]/5 blur-3xl" />
+                    <div className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-[#055288]/5 blur-3xl" />
                 </div>
 
                 <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
-                        <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#F28482]/10 px-6 py-3">
-                            <Heart className="h-5 w-5 text-[#F28482]" />
-                            <span className="text-sm font-bold text-[#F28482]">
+                        <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#055288]/10 px-6 py-3">
+                            <Heart className="h-5 w-5 text-[#055288]" />
+                            <span className="text-sm font-bold text-[#055288]">
                                 Chaque Geste Compte
                             </span>
                         </div>
 
-                        <h1 className="mb-6 text-4xl leading-tight font-bold text-[#2D3E3F] sm:text-5xl lg:text-6xl">
+                        <h1 className="mb-6 text-4xl leading-tight font-bold text-[#0b2a3d] sm:text-5xl lg:text-6xl">
                             Transformez une Vie
                             <br />
-                            <span className="text-[#5CBDB9]">
+                            <span className="text-[#03b6ed]">
                                 Avec Votre Don
                             </span>
                         </h1>
 
-                        <p className="mb-8 text-xl leading-relaxed text-[#6B7C7D]">
+                        <p className="mb-8 text-xl leading-relaxed text-[#4a6a7d]">
                             100% de votre don finance directement nos projets
                             sur le terrain. Aucun frais administratif n'est
                             prélevé grâce au soutien de nos partenaires.
@@ -97,16 +97,16 @@ export default function Donate() {
 
                         {/* Trust indicators */}
                         <div className="flex flex-wrap justify-center gap-6 text-sm">
-                            <div className="flex items-center gap-2 text-[#6B7C7D]">
-                                <Shield className="h-5 w-5 text-[#84C7A6]" />
+                            <div className="flex items-center gap-2 text-[#4a6a7d]">
+                                <Shield className="h-5 w-5 text-[#7dc044]" />
                                 <span>Paiement 100% sécurisé</span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#6B7C7D]">
-                                <CheckCircle className="h-5 w-5 text-[#84C7A6]" />
+                            <div className="flex items-center gap-2 text-[#4a6a7d]">
+                                <CheckCircle className="h-5 w-5 text-[#7dc044]" />
                                 <span>Reçu fiscal automatique</span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#6B7C7D]">
-                                <Heart className="h-5 w-5 text-[#84C7A6]" />
+                            <div className="flex items-center gap-2 text-[#4a6a7d]">
+                                <Heart className="h-5 w-5 text-[#7dc044]" />
                                 <span>0% frais de gestion</span>
                             </div>
                         </div>
@@ -128,10 +128,10 @@ export default function Donate() {
                                     {/* Step 1: Amount */}
                                     <div>
                                         <div className="mb-6 flex items-center gap-3">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] font-bold text-white">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#03b6ed] to-[#0299c9] font-bold text-white">
                                                 1
                                             </div>
-                                            <h3 className="text-2xl font-bold text-[#2D3E3F]">
+                                            <h3 className="text-2xl font-bold text-[#0b2a3d]">
                                                 Choisissez Votre Montant
                                             </h3>
                                         </div>
@@ -145,8 +145,8 @@ export default function Donate() {
                                                 }
                                                 className={`flex-1 rounded-2xl py-4 font-semibold transition-all ${
                                                     data.frequency === 'once'
-                                                        ? 'bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] text-white shadow-lg'
-                                                        : 'bg-[#F5F3F0] text-[#6B7C7D] hover:bg-[#E8E5E0]'
+                                                        ? 'bg-gradient-to-r from-[#03b6ed] to-[#0299c9] text-white shadow-lg'
+                                                        : 'bg-[#F5F3F0] text-[#4a6a7d] hover:bg-[#E8E5E0]'
                                                 }`}
                                             >
                                                 Don Ponctuel
@@ -161,8 +161,8 @@ export default function Donate() {
                                                 }
                                                 className={`flex-1 rounded-2xl py-4 font-semibold transition-all ${
                                                     data.frequency === 'monthly'
-                                                        ? 'bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] text-white shadow-lg'
-                                                        : 'bg-[#F5F3F0] text-[#6B7C7D] hover:bg-[#E8E5E0]'
+                                                        ? 'bg-gradient-to-r from-[#03b6ed] to-[#0299c9] text-white shadow-lg'
+                                                        : 'bg-[#F5F3F0] text-[#4a6a7d] hover:bg-[#E8E5E0]'
                                                 }`}
                                             >
                                                 Don Mensuel
@@ -191,14 +191,14 @@ export default function Donate() {
                                                     className={`rounded-2xl border-2 p-6 text-left transition-all ${
                                                         data.amount ===
                                                         item.amount
-                                                            ? 'border-[#5CBDB9] bg-[#5CBDB9]/5 shadow-md'
-                                                            : 'border-[#E8E5E0] hover:border-[#5CBDB9]/30'
+                                                            ? 'border-[#03b6ed] bg-[#03b6ed]/5 shadow-md'
+                                                            : 'border-[#E8E5E0] hover:border-[#03b6ed]/30'
                                                     }`}
                                                 >
-                                                    <div className="mb-2 text-3xl font-bold text-[#2D3E3F]">
+                                                    <div className="mb-2 text-3xl font-bold text-[#0b2a3d]">
                                                         {item.label} Fcfa
                                                     </div>
-                                                    <div className="text-sm leading-relaxed text-[#6B7C7D]">
+                                                    <div className="text-sm leading-relaxed text-[#4a6a7d]">
                                                         {item.impact}
                                                     </div>
                                                 </button>
@@ -207,7 +207,7 @@ export default function Donate() {
 
                                         {/* Custom amount */}
                                         <div>
-                                            <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                            <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                 Ou choisissez votre montant
                                             </label>
                                             <div className="relative">
@@ -221,11 +221,11 @@ export default function Donate() {
                                                         );
                                                         setData('amount', '');
                                                     }}
-                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 py-4 pr-12 pl-5 text-lg font-semibold text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 py-4 pr-12 pl-5 text-lg font-semibold text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                     placeholder="50"
                                                     min="5"
                                                 />
-                                                <span className="absolute top-1/2 right-5 -translate-y-1/2 text-lg font-semibold text-[#6B7C7D]">
+                                                <span className="absolute top-1/2 right-5 -translate-y-1/2 text-lg font-semibold text-[#4a6a7d]">
                                                     Fcfa
                                                 </span>
                                             </div>
@@ -235,10 +235,10 @@ export default function Donate() {
                                     {/* Step 2: Info */}
                                     <div className="border-t-2 border-[#E8E5E0] pt-8">
                                         <div className="mb-6 flex items-center gap-3">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] font-bold text-white">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#03b6ed] to-[#0299c9] font-bold text-white">
                                                 2
                                             </div>
-                                            <h3 className="text-2xl font-bold text-[#2D3E3F]">
+                                            <h3 className="text-2xl font-bold text-[#0b2a3d]">
                                                 Vos Coordonnées
                                             </h3>
                                         </div>
@@ -246,9 +246,9 @@ export default function Donate() {
                                         <div className="space-y-6">
                                             <div className="grid gap-6 sm:grid-cols-2">
                                                 <div>
-                                                    <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                                    <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                         Prénom{' '}
-                                                        <span className="text-[#F28482]">
+                                                        <span className="text-[#055288]">
                                                             *
                                                         </span>
                                                     </label>
@@ -261,14 +261,14 @@ export default function Donate() {
                                                                 e.target.value,
                                                             )
                                                         }
-                                                        className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                        className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                         required
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                                    <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                         Nom{' '}
-                                                        <span className="text-[#F28482]">
+                                                        <span className="text-[#055288]">
                                                             *
                                                         </span>
                                                     </label>
@@ -281,16 +281,16 @@ export default function Donate() {
                                                                 e.target.value,
                                                             )
                                                         }
-                                                        className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                        className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                         required
                                                     />
                                                 </div>
                                             </div>
 
                                             <div>
-                                                <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                                <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                     Email{' '}
-                                                    <span className="text-[#F28482]">
+                                                    <span className="text-[#055288]">
                                                         *
                                                     </span>
                                                 </label>
@@ -303,19 +303,19 @@ export default function Donate() {
                                                             e.target.value,
                                                         )
                                                     }
-                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                     required
                                                 />
-                                                <p className="mt-2 text-sm text-[#6B7C7D]">
+                                                <p className="mt-2 text-sm text-[#4a6a7d]">
                                                     Pour recevoir votre reçu
                                                     fiscal
                                                 </p>
                                             </div>
 
                                             <div>
-                                                <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                                <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                     Téléphone{' '}
-                                                    <span className="font-normal text-[#6B7C7D]">
+                                                    <span className="font-normal text-[#4a6a7d]">
                                                         (optionnel)
                                                     </span>
                                                 </label>
@@ -328,7 +328,7 @@ export default function Donate() {
                                                             e.target.value,
                                                         )
                                                     }
-                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                    className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                 />
                                             </div>
 
@@ -345,9 +345,9 @@ export default function Donate() {
                                                                     .checked,
                                                             )
                                                         }
-                                                        className="mt-1 h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#5CBDB9] focus:ring-[#5CBDB9] focus:ring-offset-0"
+                                                        className="mt-1 h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#03b6ed] focus:ring-[#03b6ed] focus:ring-offset-0"
                                                     />
-                                                    <span className="text-sm text-[#6B7C7D] transition-colors group-hover:text-[#2D3E3F]">
+                                                    <span className="text-sm text-[#4a6a7d] transition-colors group-hover:text-[#0b2a3d]">
                                                         Je souhaite rester
                                                         anonyme
                                                     </span>
@@ -366,9 +366,9 @@ export default function Donate() {
                                                                     .checked,
                                                             )
                                                         }
-                                                        className="mt-1 h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#5CBDB9] focus:ring-[#5CBDB9] focus:ring-offset-0"
+                                                        className="mt-1 h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#03b6ed] focus:ring-[#03b6ed] focus:ring-offset-0"
                                                     />
-                                                    <span className="text-sm text-[#6B7C7D] transition-colors group-hover:text-[#2D3E3F]">
+                                                    <span className="text-sm text-[#4a6a7d] transition-colors group-hover:text-[#0b2a3d]">
                                                         Je souhaite recevoir des
                                                         nouvelles de
                                                         l'association (1
@@ -386,7 +386,7 @@ export default function Donate() {
                                             disabled={
                                                 !selectedAmount || processing
                                             }
-                                            className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] px-10 py-5 text-lg font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
+                                            className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#03b6ed] to-[#0299c9] px-10 py-5 text-lg font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
                                         >
                                             <span className="relative z-10 flex items-center justify-center gap-3">
                                                 <CreditCard className="h-6 w-6" />
@@ -397,7 +397,7 @@ export default function Donate() {
                                             <div className="absolute inset-0 origin-left scale-x-0 transform bg-white/20 transition-transform group-hover:scale-x-100" />
                                         </button>
 
-                                        <p className="mt-4 text-center text-sm text-[#6B7C7D]">
+                                        <p className="mt-4 text-center text-sm text-[#4a6a7d]">
                                             🔒 Paiement sécurisé • Reçu fiscal
                                             envoyé automatiquement
                                         </p>
@@ -409,20 +409,20 @@ export default function Donate() {
                         {/* Sidebar - Impact & Trust */}
                         <div className="space-y-6">
                             {/* Current impact */}
-                            <div className="rounded-3xl border-2 border-[#5CBDB9]/20 bg-gradient-to-br from-[#5CBDB9]/10 to-[#84C7A6]/10 p-8">
-                                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98]">
+                            <div className="rounded-3xl border-2 border-[#03b6ed]/20 bg-gradient-to-br from-[#03b6ed]/10 to-[#7dc044]/10 p-8">
+                                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#03b6ed] to-[#0299c9]">
                                     <Droplet className="h-6 w-6 text-white" />
                                 </div>
 
-                                <h3 className="mb-4 text-xl font-bold text-[#2D3E3F]">
+                                <h3 className="mb-4 text-xl font-bold text-[#0b2a3d]">
                                     Votre Impact Direct
                                 </h3>
 
                                 {selectedAmount && (
                                     <div className="space-y-4">
                                         <div className="flex items-start gap-3">
-                                            <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#5CBDB9]" />
-                                            <p className="text-sm leading-relaxed text-[#6B7C7D]">
+                                            <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#03b6ed]" />
+                                            <p className="text-sm leading-relaxed text-[#4a6a7d]">
                                                 {amounts.find(
                                                     (a) =>
                                                         a.amount ===
@@ -434,10 +434,10 @@ export default function Donate() {
                                     </div>
                                 )}
 
-                                <div className="mt-6 border-t-2 border-[#5CBDB9]/20 pt-6">
-                                    <div className="space-y-2 text-sm text-[#6B7C7D]">
+                                <div className="mt-6 border-t-2 border-[#03b6ed]/20 pt-6">
+                                    <div className="space-y-2 text-sm text-[#4a6a7d]">
                                         <p className="flex items-center gap-2">
-                                            <span className="font-semibold text-[#2D3E3F]">
+                                            <span className="font-semibold text-[#0b2a3d]">
                                                 66%
                                             </span>
                                             de réduction d'impôt
@@ -445,7 +445,7 @@ export default function Donate() {
                                         <p className="text-xs">
                                             Un don de {formatAmount(selectedAmount) || '50'}
                                             Fcfa ne vous coûte réellement que{' '}
-                                            <span className="font-semibold text-[#2D3E3F]">
+                                            <span className="font-semibold text-[#0b2a3d]">
                                                 {formatAmount(String(Math.round(
                                                     (parseInt(selectedAmount, 10) || 50) * 0.34,
                                                 )))}
@@ -458,33 +458,33 @@ export default function Donate() {
 
                             {/* Why trust us */}
                             <div className="rounded-3xl border-2 border-[#E8E5E0] bg-white p-8 shadow-md">
-                                <h3 className="mb-6 text-lg font-bold text-[#2D3E3F]">
+                                <h3 className="mb-6 text-lg font-bold text-[#0b2a3d]">
                                     Pourquoi Nous Faire Confiance ?
                                 </h3>
 
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-3">
-                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#84C7A6]" />
-                                        <p className="text-sm text-[#6B7C7D]">
-                                            <span className="font-semibold text-[#2D3E3F]">
+                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#7dc044]" />
+                                        <p className="text-sm text-[#4a6a7d]">
+                                            <span className="font-semibold text-[#0b2a3d]">
                                                 100% des dons
                                             </span>{' '}
                                             financent les projets
                                         </p>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#84C7A6]" />
-                                        <p className="text-sm text-[#6B7C7D]">
-                                            <span className="font-semibold text-[#2D3E3F]">
+                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#7dc044]" />
+                                        <p className="text-sm text-[#4a6a7d]">
+                                            <span className="font-semibold text-[#0b2a3d]">
                                                 Transparence totale
                                             </span>{' '}
                                             sur l'utilisation des fonds
                                         </p>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#84C7A6]" />
-                                        <p className="text-sm text-[#6B7C7D]">
-                                            <span className="font-semibold text-[#2D3E3F]">
+                                        <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#7dc044]" />
+                                        <p className="text-sm text-[#4a6a7d]">
+                                            <span className="font-semibold text-[#0b2a3d]">
                                                 Rapports d'impact
                                             </span>{' '}
                                             envoyés régulièrement
@@ -495,7 +495,7 @@ export default function Donate() {
                                 <div className="mt-6 border-t-2 border-[#E8E5E0] pt-6">
                                     <a
                                         href="/mentions-legales/transparence"
-                                        className="text-sm font-semibold text-[#5CBDB9] transition-colors hover:text-[#4A9C98]"
+                                        className="text-sm font-semibold text-[#03b6ed] transition-colors hover:text-[#0299c9]"
                                     >
                                         Voir nos rapports financiers →
                                     </a>
@@ -504,32 +504,32 @@ export default function Donate() {
 
                             {/* Recent donors */}
                             <div className="rounded-3xl bg-[#F5F3F0] p-8">
-                                <h3 className="mb-4 text-lg font-bold text-[#2D3E3F]">
+                                <h3 className="mb-4 text-lg font-bold text-[#0b2a3d]">
                                     Ils Ont Déjà Fait un Geste 💚
                                 </h3>
 
-                                <div className="space-y-3 text-sm text-[#6B7C7D]">
+                                <div className="space-y-3 text-sm text-[#4a6a7d]">
                                     <p>
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             Sophie L.
                                         </span>{' '}
                                         a donné 50Fcfa
                                     </p>
                                     <p>
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             Marc D.
                                         </span>{' '}
                                         a donné 100Fcfa
                                     </p>
                                     <p>
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             Un donateur anonyme
                                         </span>{' '}
                                         a donné 250Fcfa
                                     </p>
                                 </div>
 
-                                <div className="mt-4 text-xs text-[#6B7C7D]">
+                                <div className="mt-4 text-xs text-[#4a6a7d]">
                                     Et 127 autres donateurs ce mois-ci
                                 </div>
                             </div>

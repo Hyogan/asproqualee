@@ -2,104 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Action;
+use App\Models\BlogPost;
+use App\Models\Volunteer;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
 class HomeController extends Controller
 {
-      public function index()
+    public function index()
     {
         return Inertia::render('welcome', [
-            'stats' => $this->stats(),
+            'stats'            => $this->stats(),
             'featuredProjects' => $this->featuredProjects(),
-            'recentNews' => $this->recentNews(),
-             'canRegister' => Features::enabled(Features::registration()),
+            'recentNews'       => $this->recentNews(),
+            'canRegister'      => Features::enabled(Features::registration()),
         ]);
     }
 
-    /**
-     * Impact statistics displayed on homepage
-     */
     protected function stats(): array
     {
+        $totalParticipants = (int) Action::sum('participants');
+        $totalActions      = Action::count();
+        $totalVolunteers   = Volunteer::count();
+
         return [
-            'beneficiaries'     => '25 000',
-            'projects'          => '48',
-            'volunteers'        => '320',
-            'litersDistributed' => '12M',
+            'beneficiaries'     => $totalParticipants > 0
+                ? number_format($totalParticipants, 0, ',', ' ')
+                : '0',
+            'projects'          => (string) $totalActions,
+            'volunteers'        => (string) $totalVolunteers,
+            'litersDistributed' => '—',
         ];
     }
 
-    /**
-     * Featured projects (can be replaced by DB later)
-     */
     protected function featuredProjects(): array
     {
-        return [
-            [
-                'id'          => 1,
-                'title'       => 'Accès à l’eau potable à Biyem-Assi',
-                'description' => 'Installation de points d’eau potable pour améliorer la santé et réduire les maladies hydriques.',
-                'image'       => 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80',
-                'location'    => 'Yaoundé, Cameroun',
-                'impact'      => '2 500 bénéficiaires',
-                'slug'        => 'acces-eau-potable-biyem-assi',
-            ],
-            [
-                'id'          => 2,
-                'title'       => 'Programme Ma Gourde Propre',
-                'description' => 'Sensibilisation des enfants à l’hygiène et à l’entretien des gourdes d’eau.',
-                'image'       => 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80',
-                'location'    => 'Écoles primaires',
-                'impact'      => '1 200 enfants sensibilisés',
-                'slug'        => 'ma-gourde-propre',
-            ],
-            [
-                'id'          => 3,
-                'title'       => 'Nettoyage et restauration des cours d’eau',
-                'description' => 'Actions communautaires pour restaurer les berges et préserver les écosystèmes aquatiques.',
-                'image'       => 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80',
-                'location'    => 'Région Centre',
-                'impact'      => '15 km de berges restaurées',
-                'slug'        => 'restauration-cours-eau',
-            ],
-        ];
+        return Action::with('category')
+            ->whereIn('status', ['ongoing', 'upcoming'])
+            ->latest('date')
+            ->take(3)
+            ->get()
+            ->map(fn(Action $action) => [
+                'id'          => $action->id,
+                'title'       => $action->title,
+                'description' => $action->description,
+                'image'       => $action->image ?? '',
+                'location'    => $action->location ?? '',
+                'impact'      => trim(($action->impact_value ?? '') . ' ' . ($action->impact_label ?? '')),
+                'slug'        => (string) $action->id,
+            ])
+            ->toArray();
     }
 
-    /**
-     * Latest news and publications
-     */
     protected function recentNews(): array
     {
-        return [
-            [
-                'id'       => 1,
-                'title'    => 'Journée Mondiale des Toilettes 2025',
-                'excerpt'  => 'Sensibilisation à l’importance de l’hygiène et de l’assainissement pour la santé publique.',
-                'image'    => '/images/news/world-toilet-day.jpg',
-                'date'     => '2025-11-19',
-                'category' => 'Sensibilisation',
-                'slug'     => 'journee-mondiale-des-toilettes-2025',
-            ],
-            [
-                'id'       => 2,
-                'title'    => 'Collecte communautaire des déchets',
-                'excerpt'  => 'Mobilisation des habitants pour un environnement plus propre et plus sain.',
-                'image'    => '/images/news/waste-collection.jpg',
-                'date'     => '2025-10-04',
-                'category' => 'Environnement',
-                'slug'     => 'collecte-communautaire-dechets',
-            ],
-            [
-                'id'       => 3,
-                'title'    => 'Atelier éducatif : Eau et Santé',
-                'excerpt'  => 'Formation des jeunes sur les bonnes pratiques d’hygiène et la prévention des maladies hydriques.',
-                'image'    => '/images/news/water-health-workshop.jpg',
-                'date'     => '2025-09-18',
-                'category' => 'Éducation',
-                'slug'     => 'atelier-eau-et-sante',
-            ],
-        ];
+        return BlogPost::published()
+            ->with(['author:id,name', 'category:id,name'])
+            ->latest('published_at')
+            ->take(3)
+            ->get()
+            ->map(fn(BlogPost $post) => [
+                'id'       => $post->id,
+                'title'    => $post->title,
+                'excerpt'  => $post->excerpt,
+                'image'    => $post->image ?? '',
+                'date'     => $post->published_at?->format('Y-m-d') ?? '',
+                'category' => $post->category?->name ?? '',
+                'slug'     => $post->slug,
+            ])
+            ->toArray();
     }
 }

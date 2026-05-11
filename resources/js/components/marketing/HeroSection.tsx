@@ -57,7 +57,7 @@ export default function HeroSection({
                 </h1>
 
                 {subtitle && (
-                    <p className="mx-auto max-w-3xl text-xl leading-relaxed text-[#6B7C7D]">
+                    <p className="mx-auto max-w-3xl text-xl leading-relaxed text-[#4a6a7d]">
                         {subtitle}
                     </p>
                 )}

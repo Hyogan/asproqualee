@@ -1,9 +1,9 @@
 import HeroSection from '@/components/marketing/HeroSection';
 import MainLayout from '@/layouts/app/app-main-layout';
 import { cn } from '@/lib/utils';
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { ArrowRight, Calendar, Filter, Search, User } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface BlogPost {
     id: number;
@@ -23,17 +23,13 @@ interface PaginatedPosts {
     links: { url: string | null; label: string; active: boolean }[];
 }
 
-interface Props {
+interface Props extends Record<string, unknown> {
     posts: PaginatedPosts;
     categories: string[];
+    filters: { search: string; category: string };
 }
 
-interface BlogCardProps {
-    post: BlogPost;
-    featured?: boolean;
-}
-
-function BlogCard({ post, featured = false }: BlogCardProps) {
+function BlogCard({ post, featured = false }: { post: BlogPost; featured?: boolean }) {
     return (
         <article
             className={cn(
@@ -43,12 +39,7 @@ function BlogCard({ post, featured = false }: BlogCardProps) {
                     : 'hover:scale-[1.02] hover:shadow-xl',
             )}
         >
-            <div
-                className={cn(
-                    'relative overflow-hidden',
-                    featured ? 'md:w-1/2' : 'h-56',
-                )}
-            >
+            <div className={cn('relative overflow-hidden', featured ? 'md:w-1/2' : 'h-56')}>
                 {post.image && (
                     <img
                         src={post.image}
@@ -62,12 +53,7 @@ function BlogCard({ post, featured = false }: BlogCardProps) {
                 </div>
             </div>
 
-            <div
-                className={cn(
-                    'p-6',
-                    featured && 'flex flex-col justify-center md:w-1/2',
-                )}
-            >
+            <div className={cn('p-6', featured && 'flex flex-col justify-center md:w-1/2')}>
                 <div className="mb-3 flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1.5">
                         <Calendar className="h-4 w-4" />
@@ -80,32 +66,22 @@ function BlogCard({ post, featured = false }: BlogCardProps) {
                     {post.readTime && <span>{post.readTime} de lecture</span>}
                 </div>
 
-                <h3
-                    className={cn(
-                        'mb-3 font-bold transition-colors group-hover:text-primary',
-                        featured ? 'text-2xl md:text-3xl' : 'text-xl',
-                    )}
-                >
+                <h3 className={cn('mb-3 font-bold transition-colors group-hover:text-primary', featured ? 'text-2xl md:text-3xl' : 'text-xl')}>
                     {post.title}
                 </h3>
 
-                <p className="mb-4 line-clamp-3 text-muted-foreground">
-                    {post.excerpt}
-                </p>
+                <p className="mb-4 line-clamp-3 text-muted-foreground">{post.excerpt}</p>
 
                 <div className="mb-4 flex flex-wrap gap-2">
                     {post.tags.map((tag, index) => (
-                        <span
-                            key={index}
-                            className="rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground"
-                        >
+                        <span key={index} className="rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground">
                             #{tag}
                         </span>
                     ))}
                 </div>
 
                 <a
-                    href={`/blog/post/${post.slug ?? post.id}`}
+                    href={`/blog/post/${post.slug}`}
                     className="inline-flex items-center font-semibold text-primary transition-all group-hover:gap-2"
                 >
                     Lire l'article
@@ -117,27 +93,50 @@ function BlogCard({ post, featured = false }: BlogCardProps) {
 }
 
 export default function BlogPage() {
-    const { posts, categories: rawCategories } = usePage<Props>().props;
-    const [searchQuery, setSearchQuery] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('Tous');
+    const { posts, categories: rawCategories, filters } = usePage<Props>().props;
+
+    const [searchQuery, setSearchQuery] = useState(filters.search ?? '');
+    const [selectedCategory, setSelectedCategory] = useState(filters.category || 'Tous');
+    const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const categories = ['Tous', ...rawCategories];
 
-    const filteredPosts = posts.data.filter((post) => {
-        const matchesSearch =
-            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesCategory =
-            selectedCategory === 'Tous' || post.category === selectedCategory;
-        return matchesSearch && matchesCategory;
-    });
+    const search = useCallback(
+        (query: string, category: string) => {
+            router.get(
+                '/blog',
+                {
+                    ...(query ? { search: query } : {}),
+                    ...(category && category !== 'Tous' ? { category } : {}),
+                },
+                { preserveState: true, replace: true },
+            );
+        },
+        [],
+    );
 
-    const [featuredPost, ...otherPosts] = filteredPosts;
+    // Debounce text search
+    useEffect(() => {
+        if (debounceRef.current) clearTimeout(debounceRef.current);
+        debounceRef.current = setTimeout(() => {
+            search(searchQuery, selectedCategory);
+        }, 400);
+        return () => {
+            if (debounceRef.current) clearTimeout(debounceRef.current);
+        };
+    }, [searchQuery]);
+
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category);
+        search(searchQuery, category);
+    };
+
+    const [featuredPost, ...otherPosts] = posts.data;
 
     return (
         <MainLayout
             title="Actualités & Blog sur l'Eau et la Santé | Asproqualee"
-            description="Découvrez nos articles, actions et conseils pour protéger l'eau et améliorer la santé publique. Suivez nos initiatives et restez informés."
+            description="Découvrez nos articles, actions et conseils pour protéger l'eau et améliorer la santé publique."
         >
             <main className="min-h-screen">
                 <HeroSection
@@ -147,6 +146,7 @@ export default function BlogPage() {
                     badgeText="Nos Initiatives pour l'Eau et la Santé"
                 />
 
+                {/* Search & filters */}
                 <section className="py-12">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-4xl">
@@ -167,7 +167,7 @@ export default function BlogPage() {
                                     {categories.map((category) => (
                                         <button
                                             key={category}
-                                            onClick={() => setSelectedCategory(category)}
+                                            onClick={() => handleCategoryChange(category)}
                                             className={cn(
                                                 'rounded-lg px-4 py-2 font-medium whitespace-nowrap transition-all',
                                                 selectedCategory === category
@@ -184,9 +184,10 @@ export default function BlogPage() {
                     </div>
                 </section>
 
+                {/* Posts */}
                 <section className="py-16">
                     <div className="container mx-auto px-4">
-                        {filteredPosts.length === 0 ? (
+                        {posts.data.length === 0 ? (
                             <div className="py-12 text-center">
                                 <p className="text-lg text-muted-foreground">
                                     Aucun article trouvé pour votre recherche.
@@ -194,9 +195,7 @@ export default function BlogPage() {
                             </div>
                         ) : (
                             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
-                                {featuredPost && (
-                                    <BlogCard post={featuredPost} featured />
-                                )}
+                                {featuredPost && <BlogCard post={featuredPost} featured />}
                                 {otherPosts.map((post) => (
                                     <BlogCard key={post.id} post={post} />
                                 ))}
@@ -205,26 +204,28 @@ export default function BlogPage() {
 
                         {posts.links.some((l) => l.url && !l.active) && (
                             <div className="mt-12 flex justify-center gap-2">
-                                {posts.links.map((link, i) => (
-                                    link.url && (
-                                        <a
-                                            key={i}
-                                            href={link.url}
-                                            dangerouslySetInnerHTML={{ __html: link.label }}
-                                            className={cn(
-                                                'rounded-lg px-4 py-2 text-sm font-semibold transition-all',
-                                                link.active
-                                                    ? 'bg-primary text-white'
-                                                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-                                            )}
-                                        />
-                                    )
-                                ))}
+                                {posts.links.map(
+                                    (link, i) =>
+                                        link.url && (
+                                            <a
+                                                key={i}
+                                                href={link.url}
+                                                dangerouslySetInnerHTML={{ __html: link.label }}
+                                                className={cn(
+                                                    'rounded-lg px-4 py-2 text-sm font-semibold transition-all',
+                                                    link.active
+                                                        ? 'bg-primary text-white'
+                                                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+                                                )}
+                                            />
+                                        ),
+                                )}
                             </div>
                         )}
                     </div>
                 </section>
 
+                {/* Newsletter */}
                 <section className="bg-gradient-to-br from-primary to-primary-deep py-16">
                     <div className="container mx-auto px-4">
                         <div className="mx-auto max-w-2xl text-center text-white">
@@ -232,8 +233,7 @@ export default function BlogPage() {
                                 Ne manquez aucune actualité
                             </h2>
                             <p className="mb-6 text-lg text-white/90">
-                                Inscrivez-vous à notre newsletter pour recevoir
-                                nos derniers articles et suivre nos actions
+                                Inscrivez-vous à notre newsletter pour recevoir nos derniers articles et suivre nos actions
                             </p>
                             <div className="flex gap-3">
                                 <input

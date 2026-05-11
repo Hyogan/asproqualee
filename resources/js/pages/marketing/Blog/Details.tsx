@@ -18,7 +18,7 @@ interface BlogPost {
     published_at: string | null;
 }
 
-interface Props {
+interface Props extends Record<string, unknown> {
     post: BlogPost;
 }
 

@@ -14,7 +14,7 @@ export function Card({ children, className = '', hover = false }: CardProps) {
         <div
             className={`rounded-2xl border-2 border-[#E8E5E0] bg-white shadow-sm ${
                 hover
-                    ? 'transition-all duration-300 hover:-translate-y-2 hover:border-[#5CBDB9]/30 hover:shadow-lg'
+                    ? 'transition-all duration-300 hover:-translate-y-2 hover:border-[#03b6ed]/30 hover:shadow-lg'
                     : ''
             } ${className}`}
         >
@@ -51,31 +51,31 @@ export function ProjectCard({
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     {impact && (
-                        <div className="absolute right-4 bottom-4 rounded-xl bg-gradient-to-r from-[#F28482] to-[#FFB5B3] px-4 py-2 text-sm font-bold text-white shadow-lg">
+                        <div className="absolute right-4 bottom-4 rounded-xl bg-gradient-to-r from-[#055288] to-[#FFB5B3] px-4 py-2 text-sm font-bold text-white shadow-lg">
                             {impact}
                         </div>
                     )}
                     {/* Decorative corner */}
-                    <div className="absolute top-0 left-0 h-20 w-20 rounded-br-[3rem] bg-[#5CBDB9] opacity-80" />
+                    <div className="absolute top-0 left-0 h-20 w-20 rounded-br-[3rem] bg-[#03b6ed] opacity-80" />
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
                     {location && (
-                        <div className="mb-3 inline-flex items-center gap-1 text-sm font-semibold text-[#5CBDB9]">
-                            <div className="h-1.5 w-1.5 rounded-full bg-[#5CBDB9]" />
+                        <div className="mb-3 inline-flex items-center gap-1 text-sm font-semibold text-[#03b6ed]">
+                            <div className="h-1.5 w-1.5 rounded-full bg-[#03b6ed]" />
                             {location}
                         </div>
                     )}
 
-                    <h3 className="mb-3 text-xl font-bold text-[#2D3E3F] transition-colors group-hover:text-[#5CBDB9]">
+                    <h3 className="mb-3 text-xl font-bold text-[#0b2a3d] transition-colors group-hover:text-[#03b6ed]">
                         {title}
                     </h3>
 
-                    <p className="mb-4 flex-1 leading-relaxed text-[#6B7C7D]">
+                    <p className="mb-4 flex-1 leading-relaxed text-[#4a6a7d]">
                         {description}
                     </p>
 
-                    <div className="flex items-center text-sm font-bold text-[#5CBDB9]">
+                    <div className="flex items-center text-sm font-bold text-[#03b6ed]">
                         En savoir plus
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-2" />
                     </div>
@@ -107,7 +107,7 @@ export function NewsCard({
         <Link href={href} className="group block">
             <Card hover className="flex h-full flex-col overflow-hidden">
                 {image && (
-                    <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-[#5CBDB9]/10 to-[#84C7A6]/10">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-[#03b6ed]/10 to-[#7dc044]/10">
                         <img
                             src={image}
                             alt={title}
@@ -118,26 +118,26 @@ export function NewsCard({
 
                 <div className="flex flex-1 flex-col p-6">
                     <div className="mb-4 flex items-center gap-3 text-sm">
-                        <time className="text-[#6B7C7D]">{date}</time>
+                        <time className="text-[#4a6a7d]">{date}</time>
                         {category && (
                             <>
                                 <span className="text-[#E8E5E0]">•</span>
-                                <span className="inline-flex items-center rounded-full bg-[#84C7A6]/10 px-3 py-1 text-xs font-semibold text-[#4A9C98]">
+                                <span className="inline-flex items-center rounded-full bg-[#7dc044]/10 px-3 py-1 text-xs font-semibold text-[#0299c9]">
                                     {category}
                                 </span>
                             </>
                         )}
                     </div>
 
-                    <h3 className="mb-3 line-clamp-2 text-lg font-bold text-[#2D3E3F] transition-colors group-hover:text-[#5CBDB9]">
+                    <h3 className="mb-3 line-clamp-2 text-lg font-bold text-[#0b2a3d] transition-colors group-hover:text-[#03b6ed]">
                         {title}
                     </h3>
 
-                    <p className="mb-4 line-clamp-3 flex-1 leading-relaxed text-[#6B7C7D]">
+                    <p className="mb-4 line-clamp-3 flex-1 leading-relaxed text-[#4a6a7d]">
                         {excerpt}
                     </p>
 
-                    <div className="flex items-center text-sm font-bold text-[#5CBDB9]">
+                    <div className="flex items-center text-sm font-bold text-[#03b6ed]">
                         Lire l'article
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-2" />
                     </div>
@@ -165,21 +165,21 @@ export function ProgramCard({
 }: ProgramCardProps) {
     const colors = {
         teal: {
-            bg: 'bg-[#5CBDB9]/10',
-            hoverBg: 'group-hover:bg-[#5CBDB9]',
-            text: 'text-[#5CBDB9]',
+            bg: 'bg-[#03b6ed]/10',
+            hoverBg: 'group-hover:bg-[#03b6ed]',
+            text: 'text-[#03b6ed]',
             hoverText: 'group-hover:text-white',
         },
         coral: {
-            bg: 'bg-[#F28482]/10',
-            hoverBg: 'group-hover:bg-[#F28482]',
-            text: 'text-[#F28482]',
+            bg: 'bg-[#055288]/10',
+            hoverBg: 'group-hover:bg-[#055288]',
+            text: 'text-[#055288]',
             hoverText: 'group-hover:text-white',
         },
         mint: {
-            bg: 'bg-[#84C7A6]/10',
-            hoverBg: 'group-hover:bg-[#84C7A6]',
-            text: 'text-[#84C7A6]',
+            bg: 'bg-[#7dc044]/10',
+            hoverBg: 'group-hover:bg-[#7dc044]',
+            text: 'text-[#7dc044]',
             hoverText: 'group-hover:text-white',
         },
         blue: {
@@ -207,11 +207,11 @@ export function ProgramCard({
                         {icon}
                     </div>
 
-                    <h3 className="mb-3 text-xl font-bold text-[#2D3E3F] transition-colors group-hover:text-[#5CBDB9]">
+                    <h3 className="mb-3 text-xl font-bold text-[#0b2a3d] transition-colors group-hover:text-[#03b6ed]">
                         {title}
                     </h3>
 
-                    <p className="mb-6 leading-relaxed text-[#6B7C7D]">
+                    <p className="mb-6 leading-relaxed text-[#4a6a7d]">
                         {description}
                     </p>
 

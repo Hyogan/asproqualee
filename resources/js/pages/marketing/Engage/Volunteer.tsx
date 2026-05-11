@@ -67,26 +67,26 @@ export default function Volunteer() {
             >
                 <Section>
                     <div className="mx-auto max-w-3xl py-20 text-center">
-                        <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#84C7A6] to-[#5CBDB9]">
+                        <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#7dc044] to-[#03b6ed]">
                             <Heart className="h-12 w-12 text-white" />
                         </div>
 
-                        <h1 className="mb-6 text-4xl font-bold text-[#2D3E3F]">
+                        <h1 className="mb-6 text-4xl font-bold text-[#0b2a3d]">
                             Merci pour Votre Générosité ! 💚
                         </h1>
 
-                        <p className="mb-8 text-xl leading-relaxed text-[#6B7C7D]">
+                        <p className="mb-8 text-xl leading-relaxed text-[#4a6a7d]">
                             Votre candidature a bien été reçue. Notre équipe va
                             l'étudier et vous contactera dans les prochains
                             jours pour échanger sur les opportunités de
                             bénévolat qui correspondent à votre profil.
                         </p>
 
-                        <div className="mb-8 rounded-3xl bg-[#5CBDB9]/10 p-8">
-                            <p className="mb-2 text-lg font-semibold text-[#2D3E3F]">
+                        <div className="mb-8 rounded-3xl bg-[#03b6ed]/10 p-8">
+                            <p className="mb-2 text-lg font-semibold text-[#0b2a3d]">
                                 Et en attendant ?
                             </p>
-                            <p className="text-[#6B7C7D]">
+                            <p className="text-[#4a6a7d]">
                                 Suivez-nous sur les réseaux sociaux pour
                                 découvrir les coulisses de nos projets et
                                 rencontrer notre communauté de bénévoles !
@@ -96,13 +96,13 @@ export default function Volunteer() {
                         <div className="flex flex-col justify-center gap-4 sm:flex-row">
                             <a
                                 href="/"
-                                className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
+                                className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#03b6ed] to-[#0299c9] px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
                             >
                                 Retour à l'Accueil
                             </a>
                             <a
                                 href="/actualites"
-                                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#E8E5E0] bg-white px-8 py-4 text-base font-bold text-[#2D3E3F] transition-all hover:bg-[#F5F3F0]"
+                                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#E8E5E0] bg-white px-8 py-4 text-base font-bold text-[#0b2a3d] transition-all hover:bg-[#F5F3F0]"
                             >
                                 Nos Actualités
                             </a>
@@ -121,29 +121,29 @@ export default function Volunteer() {
             {/* Hero */}
             {/* <section className="relative overflow-hidden bg-gradient-to-br from-[#F5F3F0] via-white to-[#E8F5F4] py-20 lg:py-24">
                 <div className="absolute inset-0">
-                    <div className="absolute top-20 right-10 h-96 w-96 rounded-full bg-[#84C7A6]/5 blur-3xl" />
-                    <div className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-[#F28482]/5 blur-3xl" />
+                    <div className="absolute top-20 right-10 h-96 w-96 rounded-full bg-[#7dc044]/5 blur-3xl" />
+                    <div className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-[#055288]/5 blur-3xl" />
                 </div>
 
                 <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
                     <div className="grid items-center gap-12 lg:grid-cols-2">
                         <div>
-                            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#84C7A6]/10 px-6 py-3">
-                                <Users className="h-5 w-5 text-[#84C7A6]" />
-                                <span className="text-sm font-bold text-[#4A9C98]">
+                            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#7dc044]/10 px-6 py-3">
+                                <Users className="h-5 w-5 text-[#7dc044]" />
+                                <span className="text-sm font-bold text-[#0299c9]">
                                     Rejoignez l'Aventure
                                 </span>
                             </div>
 
-                            <h1 className="mb-6 text-4xl leading-tight font-bold text-[#2D3E3F] sm:text-5xl lg:text-6xl">
+                            <h1 className="mb-6 text-4xl leading-tight font-bold text-[#0b2a3d] sm:text-5xl lg:text-6xl">
                                 Devenez Bénévole,
                                 <br />
-                                <span className="text-[#5CBDB9]">
+                                <span className="text-[#03b6ed]">
                                     Transformez des Vies
                                 </span>
                             </h1>
 
-                            <p className="mb-8 text-xl leading-relaxed text-[#6B7C7D]">
+                            <p className="mb-8 text-xl leading-relaxed text-[#4a6a7d]">
                                 Que vous ayez quelques heures par mois ou
                                 souhaitiez vous engager sur le long terme, il y
                                 a une place pour vous dans notre équipe.
@@ -152,27 +152,27 @@ export default function Volunteer() {
 
                             <div className="space-y-4">
                                 <div className="flex items-start gap-3">
-                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#84C7A6]" />
-                                    <p className="text-[#6B7C7D]">
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#7dc044]" />
+                                    <p className="text-[#4a6a7d]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             50+ bénévoles actifs
                                         </span>{' '}
                                         dans toute la région
                                     </p>
                                 </div>
                                 <div className="flex items-start gap-3">
-                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#84C7A6]" />
-                                    <p className="text-[#6B7C7D]">
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#7dc044]" />
+                                    <p className="text-[#4a6a7d]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             Missions variées
                                         </span>{' '}
                                         selon vos compétences et disponibilités
                                     </p>
                                 </div>
                                 <div className="flex items-start gap-3">
-                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#84C7A6]" />
-                                    <p className="text-[#6B7C7D]">
-                                        <span className="font-semibold text-[#2D3E3F]">
+                                    <CheckCircle className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#7dc044]" />
+                                    <p className="text-[#4a6a7d]">
+                                        <span className="font-semibold text-[#0b2a3d]">
                                             Formation et accompagnement
                                         </span>{' '}
                                         pour chaque bénévole
@@ -190,10 +190,10 @@ export default function Volunteer() {
                                 />
                             </div>
                             <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white p-6 shadow-xl">
-                                <div className="text-3xl font-bold text-[#5CBDB9]">
+                                <div className="text-3xl font-bold text-[#03b6ed]">
                                     +50
                                 </div>
-                                <div className="text-sm text-[#6B7C7D]">
+                                <div className="text-sm text-[#4a6a7d]">
                                     Bénévoles Actifs
                                 </div>
                             </div>
@@ -227,10 +227,10 @@ export default function Volunteer() {
             <Section>
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-12 text-center">
-                        <h2 className="mb-4 text-3xl font-bold text-[#2D3E3F]">
+                        <h2 className="mb-4 text-3xl font-bold text-[#0b2a3d]">
                             Parlez-Nous de Vous
                         </h2>
-                        <p className="text-lg text-[#6B7C7D]">
+                        <p className="text-lg text-[#4a6a7d]">
                             Prenez quelques minutes pour nous aider à mieux vous
                             connaître et à trouver la mission qui vous
                             correspond.
@@ -241,8 +241,8 @@ export default function Volunteer() {
                         <form onSubmit={handleSubmit} className="space-y-10">
                             {/* Personal Info */}
                             <div>
-                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#2D3E3F]">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] text-sm font-bold text-white">
+                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#0b2a3d]">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#03b6ed] to-[#0299c9] text-sm font-bold text-white">
                                         1
                                     </div>
                                     Informations Personnelles
@@ -251,9 +251,9 @@ export default function Volunteer() {
                                 <div className="space-y-6">
                                     <div className="grid gap-6 sm:grid-cols-2">
                                         <div>
-                                            <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                            <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                 Prénom{' '}
-                                                <span className="text-[#F28482]">
+                                                <span className="text-[#055288]">
                                                     *
                                                 </span>
                                             </label>
@@ -266,14 +266,14 @@ export default function Volunteer() {
                                                         e.target.value,
                                                     )
                                                 }
-                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                 required
                                             />
                                         </div>
                                         <div>
-                                            <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                            <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                 Nom{' '}
-                                                <span className="text-[#F28482]">
+                                                <span className="text-[#055288]">
                                                     *
                                                 </span>
                                             </label>
@@ -286,7 +286,7 @@ export default function Volunteer() {
                                                         e.target.value,
                                                     )
                                                 }
-                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                 required
                                             />
                                         </div>
@@ -294,9 +294,9 @@ export default function Volunteer() {
 
                                     <div className="grid gap-6 sm:grid-cols-2">
                                         <div>
-                                            <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                            <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                 Email{' '}
-                                                <span className="text-[#F28482]">
+                                                <span className="text-[#055288]">
                                                     *
                                                 </span>
                                             </label>
@@ -309,14 +309,14 @@ export default function Volunteer() {
                                                         e.target.value,
                                                     )
                                                 }
-                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                 required
                                             />
                                         </div>
                                         <div>
-                                            <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                            <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                                 Téléphone{' '}
-                                                <span className="text-[#F28482]">
+                                                <span className="text-[#055288]">
                                                     *
                                                 </span>
                                             </label>
@@ -329,16 +329,16 @@ export default function Volunteer() {
                                                         e.target.value,
                                                     )
                                                 }
-                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                                className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                                 required
                                             />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                             Ville / Région{' '}
-                                            <span className="text-[#F28482]">
+                                            <span className="text-[#055288]">
                                                 *
                                             </span>
                                         </label>
@@ -351,7 +351,7 @@ export default function Volunteer() {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                            className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                             placeholder="Ex: Yaoundé, Douala..."
                                             required
                                         />
@@ -361,8 +361,8 @@ export default function Volunteer() {
 
                             {/* Skills & Availability */}
                             <div className="border-t-2 border-[#E8E5E0] pt-10">
-                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#2D3E3F]">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] text-sm font-bold text-white">
+                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#0b2a3d]">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#03b6ed] to-[#0299c9] text-sm font-bold text-white">
                                         2
                                     </div>
                                     Vos Compétences et Disponibilités
@@ -370,9 +370,9 @@ export default function Volunteer() {
 
                                 <div className="space-y-6">
                                     <div>
-                                        <label className="mb-4 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-4 block text-sm font-semibold text-[#0b2a3d]">
                                             Compétences et Domaines d'Intérêt{' '}
-                                            <span className="font-normal text-[#6B7C7D]">
+                                            <span className="font-normal text-[#4a6a7d]">
                                                 (plusieurs choix possibles)
                                             </span>
                                         </label>
@@ -384,8 +384,8 @@ export default function Volunteer() {
                                                         data.skills.includes(
                                                             skill.value,
                                                         )
-                                                            ? 'border-[#5CBDB9] bg-[#5CBDB9]/5'
-                                                            : 'border-[#E8E5E0] hover:border-[#5CBDB9]/30'
+                                                            ? 'border-[#03b6ed] bg-[#03b6ed]/5'
+                                                            : 'border-[#E8E5E0] hover:border-[#03b6ed]/30'
                                                     }`}
                                                 >
                                                     <input
@@ -398,9 +398,9 @@ export default function Volunteer() {
                                                                 skill.value,
                                                             )
                                                         }
-                                                        className="h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#5CBDB9] focus:ring-[#5CBDB9]"
+                                                        className="h-5 w-5 rounded border-2 border-[#E8E5E0] text-[#03b6ed] focus:ring-[#03b6ed]"
                                                     />
-                                                    <span className="text-sm font-medium text-[#2D3E3F]">
+                                                    <span className="text-sm font-medium text-[#0b2a3d]">
                                                         {skill.label}
                                                     </span>
                                                 </label>
@@ -409,9 +409,9 @@ export default function Volunteer() {
                                     </div>
 
                                     <div>
-                                        <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                             Type d'Engagement Souhaité{' '}
-                                            <span className="text-[#F28482]">
+                                            <span className="text-[#055288]">
                                                 *
                                             </span>
                                         </label>
@@ -423,7 +423,7 @@ export default function Volunteer() {
                                                     e.target.value,
                                                 )
                                             }
-                                            className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                            className="w-full rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                             required
                                         >
                                             <option value="">
@@ -441,7 +441,7 @@ export default function Volunteer() {
                                     </div>
 
                                     <div>
-                                        <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                             Vos Disponibilités
                                         </label>
                                         <textarea
@@ -453,7 +453,7 @@ export default function Volunteer() {
                                                 )
                                             }
                                             rows={3}
-                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                             placeholder="Ex: Disponible les week-ends, ou 2 jours par semaine, ou pendant les vacances scolaires..."
                                         />
                                     </div>
@@ -462,8 +462,8 @@ export default function Volunteer() {
 
                             {/* Motivation */}
                             <div className="border-t-2 border-[#E8E5E0] pt-10">
-                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#2D3E3F]">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#5CBDB9] to-[#4A9C98] text-sm font-bold text-white">
+                                <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-[#0b2a3d]">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#03b6ed] to-[#0299c9] text-sm font-bold text-white">
                                         3
                                     </div>
                                     Votre Motivation
@@ -471,10 +471,10 @@ export default function Volunteer() {
 
                                 <div className="space-y-6">
                                     <div>
-                                        <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                             Pourquoi souhaitez-vous devenir
                                             bénévole ?{' '}
-                                            <span className="text-[#F28482]">
+                                            <span className="text-[#055288]">
                                                 *
                                             </span>
                                         </label>
@@ -487,17 +487,17 @@ export default function Volunteer() {
                                                 )
                                             }
                                             rows={5}
-                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                             placeholder="Partagez avec nous ce qui vous motive à nous rejoindre..."
                                             required
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="mb-3 block text-sm font-semibold text-[#2D3E3F]">
+                                        <label className="mb-3 block text-sm font-semibold text-[#0b2a3d]">
                                             Expérience Associative ou Bénévolat
                                             Antérieur{' '}
-                                            <span className="font-normal text-[#6B7C7D]">
+                                            <span className="font-normal text-[#4a6a7d]">
                                                 (optionnel)
                                             </span>
                                         </label>
@@ -510,7 +510,7 @@ export default function Volunteer() {
                                                 )
                                             }
                                             rows={4}
-                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#2D3E3F] transition-all focus:border-[#5CBDB9] focus:bg-white focus:outline-none"
+                                            className="w-full resize-none rounded-2xl border-2 border-[#E8E5E0] bg-[#F5F3F0]/50 px-5 py-4 text-[#0b2a3d] transition-all focus:border-[#03b6ed] focus:bg-white focus:outline-none"
                                             placeholder="Si vous avez déjà fait du bénévolat, parlez-nous de cette expérience..."
                                         />
                                     </div>
@@ -522,7 +522,7 @@ export default function Volunteer() {
                                 <button
                                     type="submit"
                                     disabled={processing}
-                                    className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#5CBDB9] to-[#4A9C98] px-10 py-5 text-lg font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#03b6ed] to-[#0299c9] px-10 py-5 text-lg font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     <span className="relative z-10 flex items-center justify-center gap-3">
                                         {processing
@@ -535,7 +535,7 @@ export default function Volunteer() {
                                     <div className="absolute inset-0 origin-left scale-x-0 transform bg-white/20 transition-transform group-hover:scale-x-100" />
                                 </button>
 
-                                <p className="mt-6 text-center text-sm text-[#6B7C7D]">
+                                <p className="mt-6 text-center text-sm text-[#4a6a7d]">
                                     En envoyant ce formulaire, vous acceptez
                                     d'être contacté par notre équipe pour
                                     échanger sur les opportunités de bénévolat.
@@ -549,7 +549,7 @@ export default function Volunteer() {
             {/* FAQ / Reassurance */}
             <Section background="muted">
                 <div className="mx-auto max-w-4xl">
-                    <h2 className="mb-12 text-center text-3xl font-bold text-[#2D3E3F]">
+                    <h2 className="mb-12 text-center text-3xl font-bold text-[#0b2a3d]">
                         Questions Fréquentes
                     </h2>
 
@@ -576,10 +576,10 @@ export default function Volunteer() {
                                 key={index}
                                 className="rounded-3xl bg-white p-8 shadow-md"
                             >
-                                <h3 className="mb-3 text-lg font-bold text-[#2D3E3F]">
+                                <h3 className="mb-3 text-lg font-bold text-[#0b2a3d]">
                                     {faq.q}
                                 </h3>
-                                <p className="leading-relaxed text-[#6B7C7D]">
+                                <p className="leading-relaxed text-[#4a6a7d]">
                                     {faq.a}
                                 </p>
                             </div>

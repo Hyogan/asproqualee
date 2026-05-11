@@ -23,7 +23,7 @@ export default function AppLogo({
                     <span className="truncate leading-tight font-semibold">
                         Asproqualee
                     </span>
-                    <div className="text-xs font-medium text-[#6B7C7D]">
+                    <div className="text-xs font-medium text-[#4a6a7d]">
                         Eau & Environnement
                     </div>
                 </div>
@@ -39,13 +39,13 @@ export default function AppLogo({
                         with_bg={false}
                         size={size}
                     />
-                    <div className="absolute -right-1 -bottom-1 h-4 w-4 rounded-full border-2 border-white bg-[#F28482]" />
+                    <div className="absolute -right-1 -bottom-1 h-4 w-4 rounded-full border-2 border-white bg-[#055288]" />
                 </div>
                 <div className="hidden sm:block">
-                    <div className="text-base font-bold text-[#2D3E3F]">
+                    <div className="text-base font-bold text-[#0b2a3d]">
                         AsproQualee
                     </div>
-                    <div className="text-xs font-medium text-[#6B7C7D]">
+                    <div className="text-xs font-medium text-[#4a6a7d]">
                         Eau & Environnement
                     </div>
                 </div>

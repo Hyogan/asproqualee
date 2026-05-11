@@ -15,7 +15,7 @@ export default function AboutPage() {
                         <>
                             Notre Mission
                             <br />
-                            <span className="text-[#5CBDB9]">
+                            <span className="text-[#03b6ed]">
                                 Impact Durable 🌍
                             </span>
                         </>

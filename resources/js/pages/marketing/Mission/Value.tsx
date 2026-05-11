@@ -59,7 +59,7 @@ export default function MissionPage() {
                         <>
                             Vision & Valeurs
                             <br />
-                            <span className="text-[#5CBDB9]">
+                            <span className="text-[#03b6ed]">
                                 Ce qui nous guide 💡
                             </span>
                         </>
