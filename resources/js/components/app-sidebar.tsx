@@ -19,9 +19,9 @@ import { dashboard } from '@/routes';
 import type { NavItem, SharedData } from '@/types';
 import AppLogo from './app-logo';
 
-const mainNavItems: NavItem[] = [
-    { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
-];
+// const mainNavItems: NavItem[] = [
+//     { title: 'Dashboard', href: dashboard(), icon: LayoutGrid },
+// ];
 
 const adminOverviewItems: NavItem[] = [
     { title: 'Tableau de bord', href: '/admin', icon: LayoutGrid },
@@ -70,10 +70,10 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} label="Général" />
+                <NavMain items={adminOverviewItems} label="Général" />
                 {isAdmin && (
                     <>
-                        <NavMain items={adminOverviewItems}    label="Admin" />
+                        {/* <NavMain items={adminOverviewItems}    label="Admin" /> */}
                         <NavMain items={adminContentItems}     label="Contenu" />
                         <NavMain items={adminPublicationItems} label="Publication" />
                         <NavMain items={adminCommunityItems}   label="Communauté" />

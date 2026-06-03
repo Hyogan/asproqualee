@@ -40,7 +40,7 @@ export default function Contact() {
         {
             icon: Mail,
             title: 'Email',
-            content: 'contact@association-eau.org\nRéponse sous 48h',
+            content: 'contact@asproqualee.org\nRéponse sous 48h',
             color: 'mint' as const,
         },
     ];

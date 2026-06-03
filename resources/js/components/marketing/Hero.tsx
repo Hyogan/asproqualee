@@ -41,8 +41,7 @@ export default function HeroSection() {
                             >
                                 <Droplet className="h-6 w-6 text-white" />
                             </span>{' '}
-                            Association de Protection de l'Eau et de
-                            l'Environnement
+                            Association des protecteurs de la qualité de l'eau et de l'environement 
                         </div>
                     </div>
 

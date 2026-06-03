@@ -54,10 +54,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://web.facebook.com/Asproqualee', label: 'Facebook' },
+    // { icon: Twitter, href: '#', label: 'Twitter' },
+    // { icon: Instagram, href: '#', label: 'Instagram' },
+    // { icon: Linkedin, href: '#', label: 'LinkedIn' },
 ];
 
 export default function Footer() {
@@ -100,15 +100,15 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Phone className="h-4 w-4 flex-shrink-0" />
-                                <span>+33 1 23 45 67 89</span>
+                                <span>+237 655 721 002</span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Mail className="h-4 w-4 flex-shrink-0" />
                                 <a
-                                    href="mailto:contact@association-eau.org"
+                                    href="mailto:contact@asproqualee.org"
                                     className="transition-colors hover:text-primary"
                                 >
-                                    contact@association-eau.org
+                                    contact@asproqualee.org
                                 </a>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ export default function Footer() {
                 <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8">
                     <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                         <p className="text-sm text-muted-foreground">
-                            © {currentYear} Association Eau & Environnement.
+                            © {currentYear} Association des protecteurs de la qualité de l'eau et de l'environement t.
                             Tous droits réservés.
                         </p>
 

@@ -38,7 +38,7 @@
             }
         </style>
 
-        <title inertia>{{ config('app.name', 'Laravel') . 'Association de Protection de l\'Eau et de l\'Environnement' }}</title>
+        <title inertia>{{ config('app.name', 'Asproqualee') . 'Association des protecteurs de la qualité de l\'eau et de l\'environement' }}</title>
         <meta
             name="description"
             content="{{ $description ?? 'Association engagée pour l’accès à l’eau potable, l’assainissement, la prévention des maladies hydriques et la protection de l’environnement.' }}"
@@ -53,15 +53,15 @@
 
             {{-- Open Graph --}}
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Asproqualee | Association Eau & Environnement">
-    <meta property="og:title" content="{{ $title ?? 'Association de Protection de l’Eau et de l’Environnement' }}">
-    <meta property="og:description" content="{{ $description ?? 'Accès à l’eau potable, assainissement et protection de l’environnement.' }}">
+    <meta property="og:site_name" content="Asproqualee | Association des protecteurs de la qualité de l'eau et de l'environement t">
+    <meta property="og:title" content="{{ $title ?? 'Association des protecteurs de la qualité de l\'eau et de l\'environement' }}">
+    <meta property="og:description" content="{{ $description ?? 'Accès à l\'eau potable, assainissement et protection de l\'environnement.' }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('images/og-default.png') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $title ?? 'Asproqualee | Association Eau & Environnement' }}">
+    <meta name="twitter:title" content="{{ $title ?? 'Asproqualee | Association des protecteurs de la qualité de l\'eau et de l\'environement ' }}">
     <meta name="twitter:description" content="{{ $description ?? 'Protéger l’eau, préserver la vie.' }}">
     <meta name="twitter:image" content="{{ asset('images/og-default.png') }}">
 
@@ -100,7 +100,7 @@ STRUCTURED DATA (ORG)
 {
     "@context": "https://schema.org",
     "@type": "NGO",
-    "name": "Association de Protection de l’Eau et de l’Environnement",
+    "name": "Association des protecteurs de la qualité de l'eau et de l'environement",
     "url": "{{ config('app.url') }}",
     "logo": "{{ asset('images/logo.png') }}",
     "description": "Association engagée pour l’accès à l’eau potable, l’assainissement et la prévention des maladies hydriques.",
