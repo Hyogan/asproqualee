@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SiteContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AdminSettingsController extends Controller
@@ -12,6 +13,7 @@ class AdminSettingsController extends Controller
     public function index()
     {
         abort_unless(auth()->user()->isAdmin(), 403);
+        // Auth::user()->isAdmin();
 
         return Inertia::render('admin/Settings/Index', [
             'settings' => $this->currentSettings(),

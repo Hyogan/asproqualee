@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import {
     BookOpen, DollarSign, FileText, Folder, GraduationCap,
-    LayoutGrid, Mail, ShoppingBag, Tag, Tags, Users, Zap,
+    LayoutGrid, Mail, Settings2, ShoppingBag, Tag, Tags, Users, Zap,
 } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -51,6 +51,10 @@ const adminSiteItems: NavItem[] = [
     { title: 'Page Valeurs',  href: '/admin/pages/values', icon: FileText },
 ];
 
+const adminConfigItems: NavItem[] = [
+    { title: 'Paramètres', href: '/admin/settings', icon: Settings2 },
+];
+
 export function AppSidebar() {
     const { auth } = usePage<SharedData>().props;
     const isAdmin = auth.user.role === 'admin' || auth.user.role === 'editor';
@@ -78,6 +82,7 @@ export function AppSidebar() {
                         <NavMain items={adminPublicationItems} label="Publication" />
                         <NavMain items={adminCommunityItems}   label="Communauté" />
                         <NavMain items={adminSiteItems}        label="Pages du site" />
+                        <NavMain items={adminConfigItems}     label="Configuration" />
                     </>
                 )}
             </SidebarContent>

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVolunteerRequest;
+use App\Mail\VolunteerApplicationReceived;
+use App\Models\SiteContent;
 use App\Models\Volunteer;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -20,7 +23,7 @@ class VolunteerController extends Controller
     {
         $validated = $request->validated();
 
-        Volunteer::create([
+        $volunteer = Volunteer::create([
             'first_name'   => $validated['firstName'],
             'last_name'    => $validated['lastName'],
             'email'        => $validated['email'],
@@ -33,6 +36,17 @@ class VolunteerController extends Controller
             'experience'   => $validated['experience'] ?? null,
         ]);
 
+        $adminEmail = $this->adminEmail();
+        if ($adminEmail) {
+            Mail::to($adminEmail)->send(new VolunteerApplicationReceived($volunteer));
+        }
+
         return redirect()->back()->with('success', 'Votre candidature a bien été enregistrée.');
+    }
+
+    private function adminEmail(): ?string
+    {
+        $general = SiteContent::get('settings.general', []);
+        return $general['email'] ?? config('mail.from.address');
     }
 }

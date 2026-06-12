@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDonationController;
 use App\Http\Controllers\Admin\AdminTaxonomyController;
 use App\Http\Controllers\Admin\AdminPagesController;
+use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminVolunteerController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\DonateController;
@@ -150,6 +151,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified', 'admin']
     Route::put('/pages/about',  [AdminPagesController::class, 'updateAbout'])->name('pages.about.update');
     Route::get('/pages/values', [AdminPagesController::class, 'values'])->name('pages.values');
     Route::put('/pages/values', [AdminPagesController::class, 'updateValues'])->name('pages.values.update');
+
+    Route::get('/settings',  [AdminSettingsController::class, 'index'])->name('settings.index');
+    Route::put('/settings',  [AdminSettingsController::class, 'update'])->name('settings.update');
 });
 
 require __DIR__ . '/settings.php';
