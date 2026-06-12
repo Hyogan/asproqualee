@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { login } from '@/routes';
-import { store } from '@/routes/register';
+// import { store } from '@/routes/register';
 
 export default function Register() {
     return (
@@ -16,7 +16,10 @@ export default function Register() {
             description="Enter your details below to create your account"
         >
             <Head title="Register" />
-            <Form
+            <h2 className="text-4xl text-blue-600">
+                403
+            </h2>
+            {/* <Form
                 {...store.form()}
                 resetOnSuccess={['password', 'password_confirmation']}
                 disableWhileProcessing
@@ -108,7 +111,7 @@ export default function Register() {
                         </div>
                     </>
                 )}
-            </Form>
+            </Form> */}
         </AuthLayout>
     );
 }
